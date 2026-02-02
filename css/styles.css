@@ -8,7 +8,7 @@
    ========================= */
 :root {
     --primary-color: #180d5d;      /* TCU Purple */
-    --secondary-color: #1261a5;    /* Light Purple */
+    --secondary-color: #c8d8e6;    /* Light Purple */
     --accent-color: #973f1f;       /* Gold accent */
     --text-color: #201e1e;            /* Dark gray for text */
     --text-secondary: #64748b;     /* Lighter gray for captions */
@@ -225,7 +225,7 @@ code {
 /* Inline code (inside paragraphs) */
 p code, li code {
     background: #f4f4f4;
-    color: #c7254e;
+    color: #4325c7;
     padding: 0.2rem 0.4rem;
     border-radius: 3px;
     font-size: 0.9em;
