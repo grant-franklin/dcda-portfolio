@@ -167,7 +167,25 @@ main section li {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 0.5rem;
 }
+.viz-container {
+    margin: 2rem 0;
+    text-align: center;
+}
+/* =========================
+Lab 2 Screenshots (ChatGPT & Firefly)
+   ========================= */
+figure {
+    max-width: 240px;     /* Controls screenshot width */
+    margin: 2rem auto;    /* Centers the image block */
+}
 
+figure img {
+    max-width: 100%;      /* Keeps image responsive */
+    height: auto;         /* Preserves proportions */
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+}
 /* Figure captions */
 .viz-container figcaption {
     font-style: italic;
