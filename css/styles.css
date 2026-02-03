@@ -104,7 +104,7 @@ nav a:hover {
    ========================= */
 /* Style main semantic tag directly */
 main {
-    max-width: 200px;          /* Don't get too wide */
+    max-width: 800px;          /* Don't get too wide */
     margin: 2rem auto;         /* Center horizontally */
     padding: 0 1rem;           /* Space on sides for mobile */
 }
@@ -172,16 +172,17 @@ main section li {
     text-align: center;
 }
 /* =========================
-Lab 2 Screenshots (ChatGPT & Firefly)
+/*2 Screenshots (ChatGPT & Firefly)
    ========================= */
 figure {
-    max-width: 240px;     /* Controls screenshot width */
-    margin: 2rem auto;    /* Centers the image block */
+    max-width: 600px;     /* Ideal width for screenshots */
+    margin: 2rem auto;
+    text-align: center;
 }
 
 figure img {
-    max-width: 100%;      /* Keeps image responsive */
-    height: auto;         /* Preserves proportions */
+    max-width: 100%;
+    height: auto;
     display: block;
     margin: 0 auto;
     border-radius: 8px;
