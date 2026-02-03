@@ -104,7 +104,7 @@ nav a:hover {
    ========================= */
 /* Style main semantic tag directly */
 main {
-    max-width: 900px;          /* Don't get too wide */
+    max-width: 200px;          /* Don't get too wide */
     margin: 2rem auto;         /* Center horizontally */
     padding: 0 1rem;           /* Space on sides for mobile */
 }
