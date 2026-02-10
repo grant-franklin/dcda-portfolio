@@ -1,0 +1,48 @@
+<section>
+<h2>Tableau Visualization</h2>
+<p>This interactive dashboard was created in Tableau Public and embedded into this portfolio.</p>
+
+<div class="tableau-responsive">
+    <iframe
+    src="https://us-east-1.online.tableau.com/t/grantfranklin04-7f642cf578/views/DataVisualizationinTableau-AnalysisofBroadcomAVGOStockPerformance/Dashboard1?:showVizHome=no&:embed=yes&:toolbar=yes"
+    width="100%"
+    height="800"
+    frameborder="0"
+    allowfullscreen>
+    </iframe>
+</div>
+</section>
+
+<section class="reflection">
+  <h2>Reflection and Analysis</h2>
+
+  <h3>1. Data Preparation</h3>
+  <p>
+    The dataset used for this visualization consists of historical stock market data for Broadcom Inc. (AVGO) from 2009 to 2025, including daily open, high, low, close, adjusted close prices, and trading volume. Overall, the dataset was relatively clean compared to many real-world datasets, which reduced the amount of preprocessing required. However, when uploading the CSV file into Tableau Public, the primary issue involved how the date field was interpreted. The date column initially included both timestamp and timezone information, which required verification to ensure Tableau correctly recognized it as a date field rather than plain text. Once confirmed, Tableau parsed the date correctly, allowing it to be used as a continuous time dimension. No additional cleaning was necessary for numeric fields, as prices and volume were already formatted consistently. This experience reinforced the importance of checking data types before building visualizations, even when working with well-structured financial data.
+  </p>
+
+  <h3>2. Design Choices</h3>
+  <p>
+    Two primary visualizations were created to support exploratory analysis. The first chart displays adjusted closing price over time, using date as the horizontal axis and adjusted close as the vertical axis. Adjusted closing price was chosen over raw closing price because it accounts for stock splits and dividends, providing a more accurate representation of long-term value. The second chart visualizes daily price volatility using a calculated field defined as the difference between the daily high and low prices. This derived metric allows volatility to be analyzed independently from overall price direction. A line mark type was selected for both charts to emphasize continuity and trends over time. The two charts were combined into a dashboard, with the price trend acting as a filter for the volatility chart, enabling interactive exploration of specific time periods.
+  </p>
+
+  <h3>3. Expected Patterns</h3>
+  <p>
+    Based on general knowledge of stock market behavior and Broadcom’s position within the semiconductor industry, several patterns were expected prior to visualizing the data. First, a long-term upward trend in adjusted price was anticipated, reflecting both company growth and broader market expansion over the past decade. Second, periods of increased volatility were expected around major market disruptions, such as the COVID-19 pandemic and periods of economic uncertainty. These expectations were largely confirmed by the visualization. The adjusted price chart shows steady growth over time, particularly accelerating after 2020. Focusing on the period following 2022, the visualization confirms a steeper upward trajectory, consistent with increased demand for semiconductor infrastructure and investor optimism around emerging technologies.
+  </p>
+
+  <h3>4. Surprises and Outliers</h3>
+  <p>
+    While the overall trends aligned with expectations, several surprising deviations emerged when examining daily volatility. Notably, late 2021 displays a sharp volatility spike followed by a dip in price, suggesting heightened uncertainty rather than a sustained directional shift. Even more striking were volatility spikes in mid-2023 and April 2024, which were larger than anticipated given the already strong price performance. These spikes indicate that significant intraday price movement can occur even during periods of long-term growth. Additionally, some volatility spikes did not correspond to major downward price movements, highlighting how market reactions can amplify short-term instability without fundamentally altering the broader trend.
+  </p>
+
+  <h3>5. Questions for Further Investigation</h3>
+  <p>
+    The observed outliers raise several questions that could guide further analysis. How closely do the largest volatility spikes align with Broadcom’s earnings announcements or acquisition news? Are similar volatility patterns visible across other semiconductor firms during the same periods, or are they company-specific? Additionally, how much of the observed volatility can be attributed to broader macroeconomic factors such as interest rate expectations versus industry-specific developments like AI-related demand? Exploring these questions would require integrating external datasets, such as earnings calendars, macroeconomic indicators, or peer company stock data.
+  </p>
+
+  <h3>6. Tool Evaluation</h3>
+  <p>
+    Tableau Public proved to be a powerful tool for exploratory data analysis, particularly for identifying trends and anomalies within time-series data. Its ability to quickly generate interactive visualizations made it easy to explore multiple perspectives without extensive coding. Features such as calculated fields, tooltips, and dashboard filters allowed for layered analysis while maintaining visual clarity. However, Tableau Public has limitations compared to programming-based tools like Python or R. Advanced statistical analysis, event annotation, and automated anomaly detection are more difficult to implement within Tableau’s web interface. Additionally, customization options are somewhat constrained in the free public version. Despite these limitations, Tableau excels at revealing patterns and supporting exploratory reasoning, making it well-suited for this analysis.
+  </p>
+</section>
