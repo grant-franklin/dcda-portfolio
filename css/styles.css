@@ -455,3 +455,63 @@ footer a:hover {
 .screenshot {
     max-width: 700px;
 }
+
+/* Lab 5: Portfolio card hover animation
+   Understanding spectrum: "I understand the logic"
+
+   I understand that 'transition' makes changes happen smoothly over time.
+   When the card is hovered, the transform moves it upward slightly
+   and the box-shadow adds depth. The hover state triggers the change.
+   I could explain what each property does, but I probably couldn't
+   write this perfectly from memory without looking it up.
+*/
+
+.portfolio-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Lab 5: Navigation hover transition
+   Understanding spectrum: "I wrote this"
+
+   I understand this fully. The transition applies to opacity,
+   and when a user hovers over a link, the opacity decreases slightly.
+   The transition makes the change smooth instead of instant.
+*/
+
+nav a {
+  transition: opacity 0.2s ease;
+}
+
+nav a:hover {
+  opacity: 0.7;
+}
+
+/* Lab 5: Fade-in animation on page load
+   Understanding spectrum: "I know what it does but not fully how"
+
+   I understand that @keyframes defines an animation sequence.
+   The page starts slightly transparent and slightly lower,
+   then moves into place and becomes fully visible.
+   I understand the effect and timing, but I would need to
+   look up syntax details for keyframes if writing from scratch.
+*/
+
+main {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
