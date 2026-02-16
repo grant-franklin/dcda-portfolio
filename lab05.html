@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 5 | Vibe Coding</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="lab02.html">Lab 2</a>
+    <a href="lab03.html">Lab 3</a>
+    <a href="lab04.html">Lab 4</a>
+    <a href="lab05.html" class="active">Lab 5</a>
+  </nav>
+  <h1>Lab 5: AI-Assisted Development</h1>
+</header>
+
+<main>
+
+  <section id="overview">
+    <h2>Overview</h2>
+    <p>
+      In this lab, I explored AI as a coding collaborator. I completed two experiments: enhancing my
+      portfolio with CSS animations and using Google Colab to analyze NCAA tournament data.
+    </p>
+  </section>
+
+  <section id="exp-a">
+    <h2>Experiment A: Portfolio Enhancement</h2>
+
+    <h3>Feature Added</h3>
+    <p>
+      I added CSS animations and transitions to improve the visual experience of my portfolio. This
+      included hover effects on portfolio cards and a smooth fade-in animation on page load.
+    </p>
+
+    <h3>Key Code Snippet with Understanding Comments</h3>
+    <pre><code>
+/* Understanding spectrum: "I understand the logic"
+   The transition property makes hover changes smooth.
+   The transform shifts the card upward slightly.
+*/
+.portfolio-card {
+  transition: transform 0.2s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-6px);
+}
+    </code></pre>
+
+    <h3>Screenshot</h3>
+    <img src="images/lab5_animation.png" alt="Portfolio animation example">
+  </section>
+
+  <section id="exp-b">
+    <h2>Experiment B: Python Data Analysis</h2>
+
+    <h3>Research Question</h3>
+    <p>Do NCAA tournament seeds align with FiveThirtyEight power ratings?</p>
+
+    <h3>Analysis Summary</h3>
+    <p>
+      Using Google Colab and AI-generated Python code, I created charts comparing seed and power
+      rating and computed correlation to evaluate alignment between the model and committee decisions.
+    </p>
+
+    <h3>Charts Carousel</h3>
+    <p>Use the arrows to view each chart screenshot.</p>
+
+    <div class="carousel" data-carousel>
+      <button class="carousel-btn prev" type="button" aria-label="Previous slide" data-carousel-prev>
+        ‹
+      </button>
+
+      <div class="carousel-viewport">
+        <div class="carousel-track" data-carousel-track>
+          <figure class="carousel-slide is-active">
+            <img src="images/PRvTR.png" alt="Chart 1: Seed vs Power Rating scatter plot">
+            <figcaption>Chart 1: Seed vs Power Rating</figcaption>
+          </figure>
+
+          <figure class="carousel-slide">
+            <img src="images/Adobe.png" alt="Chart 2: Power rating distribution by seed">
+            <figcaption>Chart 2: Power Rating by Seed</figcaption>
+          </figure>
+
+          <figure class="carousel-slide">
+            <img src="images/SvPR.png" alt="Chart 3: Additional chart from Colab analysis">
+            <figcaption>Chart 3: Additional analysis</figcaption>
+          </figure>
+
+             <figure class="carousel-slide">
+            <img src="images/TOP100PR.png" alt="Chart 4: Power rating distribution by seed">
+            <figcaption>Chart 4: Power Rating by Seed</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <button class="carousel-btn next" type="button" aria-label="Next slide" data-carousel-next>
+        ›
+      </button>
+    </div>
+
+    <p>
+      <a href="Lab5_MarchMadness_Model_vs_Seed.ipynb" target="_blank">
+        View Full Google Colab Notebook
+      </a>
+    </p>
+  </section>
+
+  <section id="guidelines">
+    <h2>My Vibe Coding Guidelines</h2>
+    <ul>
+      <li>I must be able to explain any code I use.</li>
+      <li>I will not submit AI output without reviewing and testing it.</li>
+      <li>I will test edge cases before trusting results.</li>
+      <li>I will document what I do not fully understand.</li>
+    </ul>
+  </section>
+
+  <section id="exp-c">
+    <h2>Experiment C: Debugging With AI</h2>
+
+    <p>
+      I will complete this section after finishing Experiment C. This experiment will document a bug
+      in my own code, how I tried to fix it first, how AI suggested a fix, and what I learned.
+    </p>
+
+    <h3>The Bug</h3>
+    <p>Description of what was broken, what I expected to happen, and what actually happened.</p>
+
+    <h3>My Attempt Before AI</h3>
+    <p>What I tried first, what I thought the issue was, and why.</p>
+
+    <h3>AI Fix and Evaluation</h3>
+    <p>What the AI suggested, whether it worked, and whether it introduced any new problems.</p>
+
+    <h3>What I Learned</h3>
+    <p>Short takeaway about debugging and how AI helped or confused the process.</p>
+
+    <h3>Evidence</h3>
+    <p>Add screenshots before and after the fix.</p>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Grant Franklin</p>
+</footer>
+
+<script src="js/carousel.js"></script>
+
+</body>
+</html>
