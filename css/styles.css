@@ -515,3 +515,58 @@ main {
     transform: translateY(0);
   }
 }
+
+/* Lab 5 Carousel styles
+   Understanding spectrum: "I understand the logic"
+   The viewport hides overflow. The track slides left or right.
+   JS changes transform to show the current slide. */
+
+.carousel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.15);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.35s ease;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  margin: 0;
+  background: #690269;
+}
+
+.carousel-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.carousel-slide figcaption {
+  padding: 10px 12px;
+  font-size: 0.95rem;
+}
+
+.carousel-btn {
+  border: 1px solid rgb(247, 245, 245);
+  background: hsl(285, 97%, 46%);
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.carousel-btn:active {
+  transform: scale(0.98);
+}
