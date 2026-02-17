@@ -401,18 +401,78 @@ footer a:hover {
 
     nav {
         font-size: 0.9rem;
+        position: relative; /* anchor toggle */
     }
 
-    /* Stack navigation vertically on mobile */
+    /* Hide the nav list by default on small screens; show via .open class */
     nav ul {
-        flex-direction: column;  /* Change from row to column */
-        align-items: center;     /* Center the stacked items */
+        display: none;               /* hidden until toggled */
+        flex-direction: column;      /* vertical stack when visible */
+        align-items: stretch;        /* fill width */
+        gap: 0;                      /* remove horizontal gaps */
+        margin: 0.5rem 0 0 0;
+    }
+
+    nav.open ul {
+        display: flex;               /* visible when nav has .open */
     }
 
     nav a {
-        display: block;          /* Full width for easier tapping */
+        display: block;              /* Full width for easier tapping */
         width: 100%;
-        text-align: center;
+        text-align: left;
+        padding: 0.75rem 1rem;
+        border-radius: 0;            /* flush corners inside collapsed menu */
+        border-top: 1px solid rgba(255,255,255,0.03);
+        background: transparent;
+    }
+
+    /* Hamburger toggle button (hidden on desktop) */
+    .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.08);
+        color: white;
+        border-radius: 8px;
+        margin-right: 0.5rem;
+        cursor: pointer;
+    }
+
+    /* Hamburger icon lines */
+    .nav-toggle .hamburger,
+    .nav-toggle .hamburger::before,
+    .nav-toggle .hamburger::after {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: white;
+        border-radius: 2px;
+        position: relative;
+    }
+
+    .nav-toggle .hamburger::before,
+    .nav-toggle .hamburger::after {
+        content: '';
+        position: absolute;
+        left: 0;
+    }
+
+    .nav-toggle .hamburger::before { top: -6px; }
+    .nav-toggle .hamburger::after { top: 6px; }
+
+    /* When nav is open, slightly change the hamburger for visual feedback */
+    nav.open .nav-toggle .hamburger {
+        background: transparent;
+    }
+    nav.open .nav-toggle .hamburger::before {
+        transform: rotate(45deg) translate(4px, 4px);
+    }
+    nav.open .nav-toggle .hamburger::after {
+        transform: rotate(-45deg) translate(4px, -4px);
     }
 
     main section {
