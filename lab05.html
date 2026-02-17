@@ -49,10 +49,7 @@
     <p>Do NCAA tournament seeds align with FiveThirtyEight power ratings?</p>
 
     <h3>Analysis Summary</h3>
-    <p>
-      Using Google Colab and AI-generated Python code, I created charts comparing seed and power
-      rating and computed correlation to evaluate alignment between the model and committee decisions.
-    </p>
+    <p>For Experiment B, I used Google Collab and AI-generated Python code to analyze NCAA tournament seeding compared to FiveThirtyEight power ratings. I used pandas and matplotlib to create a scatter plot of Seed versus Power Rating and additional visualizations showing rating distributions. The scatter plot allowed for a broader visual assessment of the correlation between model rankings and official seeding. While higher seeds generally corresponded to stronger power ratings, I did notice some inconsistencies. While outliers where lower seeds have power ratings higher than teams above them exist, my focus was on certain teams under this category. Mid-major conferences and teams get systematically punished with the MVC (83%) leading – the committee favors these conference power brands over quality power ratings. Overall, this experiment demonstrated how AI can speed up technical implementation while still requiring human usage and critical evaluation.</p>
 
     <h3>Charts Carousel</h3>
     <p>Use the arrows to view each chart screenshot.</p>
@@ -102,16 +99,16 @@
     <h2>Experiment C: Debugging With AI</h2>
 
     <h3>The Bug</h3>
-    <p>Fill Description of what was broken, what I expected to happen, and what actually happened.</p>
+    <p>The image carousel on my Lab05.HTML page was displaying the carousel and arrows, but would only display the first slide. I expected the next (arrow) buttons to cycle through all four chart images, but clicking them had no visible effect.</p>
 
     <h3>My Attempt Before AI</h3>
-    <p>Fill.</p>
+    <p>The fist thing I checked was to make sure my carousel.js file to see if my structure was correct. I also checked the CSS and confirmed the carousel styling was properly set up. My last and final check was to see if my charts had possibly loaded incorrectly or out of place. I couldn't immediately see what was wrong because there were no obvious syntax errors.</p>
 
     <h3>AI Fix and Evaluation</h3>
-    <p>Fill.</p>
+    <p>With CLAUDE AI assistance, I identified that the Carousel file existed and the logic was sound, but the file path structure was the actual problem. I did not use Copilot to create the file, and instead manually created the folder, but under “css”. The js/ folder was nested incorrectly relative to the HTML file, so carousel.js was never loading at all — the buttons had no event listeners attached. The fix was repositioning the js/ folder to sit at the same level as css/ and the HTML files. The JS itself required no changes.</p>
 
     <h3>What I Learned</h3>
-    <p>Fill.</p>
+    <p>The most valuable lesson was that bugs aren't always in the code itself and that sometimes the issue is environmental. It is important to double-check every process from the root, even the seamless pieces like creating your files and folders. I spent too much time focusing on the coding issues when I could have easily looked into my portfolio files and found the problem.</p>
   </section>
 
 </main>
