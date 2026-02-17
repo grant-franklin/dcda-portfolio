@@ -11,7 +11,12 @@
 <body>
     <!-- Navigation: Links to all portfolio pages -->
     <nav>
-        <ul>
+        <!-- Hamburger toggle (appears on small screens) -->
+        <button class="nav-toggle" aria-controls="nav-list" aria-expanded="false" aria-label="Open navigation">
+            <span class="hamburger"></span>
+        </button>
+
+        <ul id="nav-list">
             <li><a href="index.html">Home</a></li>
             <li><a href="lab02.html">AI Evaluation</a></li>
             <li><a href="lab03.html">Tufte Critique</a></li>
@@ -120,5 +125,7 @@
         <p><a href="https://github.com/grant-franklin/DCDA-PORTFOLIO">View Repository on GitHub</a></p>
         <p>&copy; 2026 Your Name | DCDA 40833 | TCU</p>
     </footer>
+    <!-- Site scripts -->
+    <script src="js/hamburger.js" defer></script>
 </body>
 </html>
