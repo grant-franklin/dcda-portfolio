@@ -7,9 +7,9 @@
    CSS Variables (Color Scheme)
    ========================= */
 :root {
-    --primary-color: #5700d0;      /* TCU Purple */
+    --primary-color: #300072;      /* TCU Purple */
     --secondary-color: #afbcc9;    /* Light Purple */
-    --accent-color: #00b7ff;       /* Gold accent */
+    --accent-color: #75d8ff;       /* Gold accent */
     --text-color: #312f2f;            /* Dark gray for text */
     --text-secondary: #000000;     /* Lighter gray for captions */
     --bg-color: #f4f4f4;           /* Light background */
@@ -61,7 +61,7 @@ header p {
 }
 
 nav {
-    background-color: #142e83;
+    background-color: #1f003a;
     padding: 0.75rem;
     display: flex;              /* Make nav a flex container */
     justify-content: center;    /* Center the ul inside nav */
