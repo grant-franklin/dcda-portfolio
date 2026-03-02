@@ -35,6 +35,10 @@ __pycache__/
 sandbox.html
 practice.html
 
+# Environment variables
+.env
+.env.local
+
 
 # Do NOT ignore these:
 !images/.gitkeep

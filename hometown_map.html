@@ -23,7 +23,7 @@
                     height: 100.0%;
                     left: 0.0%;
                     top: 0.0%;
-                }
+                }                var token = process.env.MAPBOX_ACCESS_TOKEN || 'YOUR_MAPBOX_ACCESS_TOKEN
                 .leaflet-container { font-size: 1rem; }
             </style>
 
@@ -47,6 +47,17 @@
             <script>
                 L_NO_TOUCH = false;
                 L_DISABLE_3D = false;
+                
+                // Load Mapbox token from .env file
+                fetch('.env')
+                    .then(response => response.text())
+                    .then(data => {
+                        const tokenMatch = data.match(/MAPBOX_ACCESS_TOKEN=(.+)/);
+                        if (tokenMatch && tokenMatch[1]) {
+                            window.MAPBOX_TOKEN = tokenMatch[1].trim();
+                        }
+                    })
+                    .catch(error => console.log('Note: .env file not found for local development. Using placeholder token.'));
             </script>
 
         
@@ -78,8 +89,13 @@
 
         
     
+            // Load Mapbox token from environment or use placeholder
+            var mapboxToken = (typeof window.MAPBOX_TOKEN !== 'undefined') 
+                ? window.MAPBOX_TOKEN 
+                : 'YOUR_MAPBOX_ACCESS_TOKEN';
+            
             var tile_layer_7adfd9428f379391ab31382f942d1b9b = L.tileLayer(
-                "https://api.mapbox.com/styles/v1/gfranklin1401/cmm0sg7q6000s01s5204zgavt/tiles/256/{z}/{x}/{y}@2x?access_token=YOUR_MAPBOX_ACCESS_TOKEN",
+                "https://api.mapbox.com/styles/v1/gfranklin1401/cmm0sg7q6000s01s5204zgavt/tiles/256/{z}/{x}/{y}@2x?access_token=" + mapboxToken,
                 {
   "minZoom": 0,
   "maxZoom": 18,
