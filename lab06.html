@@ -137,7 +137,7 @@
                     <!-- Design Inspiration -->
                     <div class="reflection-box">
                         <h4>🎨 Design Inspiration</h4>
-                        <p><strong>Basemap Style:</strong> I chose a custom Mapbox style that emphasizes [describe your design choices]</p>
+                        <p><strong>Basemap Style:</strong> For my design for my basemap my goal was to make it a simple to use as possible. I chose regular styles you would see on most interactive maps keeping land and water components tan (desert like) and blue. I wanted the map to feel sleep but detailed adding variations for colors for different types of roads, monuments, and geo locations. I also kept the overall palette simple so that my hometown pop up locations are clear and visible. chose a custom Mapbox style that emphasizes</p>
                         <ul>
                             <li><strong>Color Palette:</strong> [Describe your colors and their meaning]</li>
                             <li><strong>Visual Elements:</strong> [What features did you emphasize?]</li>
@@ -153,13 +153,13 @@
                         <h4>🗺️ Cartographic Challenges</h4>
                         <p><strong>Multi-Scale Design:</strong> My basemap adapts across zoom levels:</p>
                         <ul>
-                            <li><strong>World/Regional (Zoom 1-10):</strong> [What's visible? Why?]</li>
-                            <li><strong>Local (Zoom 12+):</strong> [What details appear at street level?]</li>
+                            <li><strong>World/Regional (Zoom 1-10):</strong> One of the bigger challenges was making decisions on design for multiple zoom levels. At a wider view I wanted my map to feel clean and sleek with few visible labels, so I limited visible features to only display major roads or land usage.</li>
+                            <li><strong>Local (Zoom 12+):</strong> As the user zooms in closer to the neighborhood level, you can see the smaller streets, buildings, and labels. Creating this balance was tricky as I aimed to have as much data as possible while still having a efficient and easily maneuverable map.</li>
                         </ul>
                         <p><strong>Challenges Overcome:</strong></p>
                         <ul>
-                            <li>[Challenge 1 and how you solved it]</li>
-                            <li>[Challenge 2 and how you solved it]</li>
+                            <li>The biggest technical challenge I faced was integrating my Map Box with the Folium in VS Code/Python. Getting both the URL format and making sure my style ID loaded in properly took a few rounds of troubleshooting. Another huge issue I ran into was my GitHub blocking my push due to Map Box token being hardcoded into my file. I had to use a (.env) file in order to store the token separately and then add it to (.gitignore) so it could not be tracked. I used tools like Claude Haiku 4.5 copilot to help me understand the environments and debug.</li>
+                        
                         </ul>
                     </div>
 
