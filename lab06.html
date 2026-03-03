@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lab 6: Interactive Hometown Map with Custom Basemap Design">
+    <meta name="author" content="Grant Franklin">
+    <title>Lab 6: Hometown Map | DCDA 40833 Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Lab 6 specific styles */
+        .lab6-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .map-section {
+            grid-column: 1 / -1;
+            margin-bottom: 2rem;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .reflection-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .reflection-section h3 {
+            grid-column: 1 / -1;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 0.5rem;
+        }
+
+        .reflection-box {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-left: 4px solid #4CAF50;
+            border-radius: 4px;
+        }
+
+        .reflection-box h4 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+        }
+
+        .reflection-box p, .reflection-box ul {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0.5rem 0;
+            color: #333;
+        }
+
+        .reflection-box ul {
+            padding-left: 1.5rem;
+        }
+
+        .reflection-box li {
+            margin: 0.3rem 0;
+        }
+
+        @media (max-width: 900px) {
+            .lab6-container {
+                grid-template-columns: 1fr;
+            }
+
+            .reflection-section {
+                grid-template-columns: 1fr;
+            }
+
+            .map-frame {
+                height: 500px;
+            }
+        }
+
+        .key-takeaway {
+            background-color: #e8f5e9;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-style: italic;
+            color: #1b5e20;
+            border-left: 4px solid #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <button class="nav-toggle" aria-controls="nav-list" aria-expanded="false" aria-label="Open navigation">
+            <span class="hamburger"></span>
+        </button>
+
+        <ul id="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="lab02.html">AI Evaluation</a></li>
+            <li><a href="lab03.html">Tufte Critique</a></li>
+            <li><a href="lab04.html">Tableau Viz</a></li>
+            <li><a href="lab05.html">Lab 5</a></li>
+            <li><a href="lab06.html">Hometown Map</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Lab 6: Interactive Hometown Map</h1>
+        <p>Custom Basemap Design & Web Mapping with Mapbox and Folium</p>
+    </header>
+
+    <main>
+        <section id="lab6-content">
+            <!-- Map Display -->
+            <div class="lab6-container">
+                <div class="map-section">
+                    <h2>Interactive Map</h2>
+                    <p>Explore the map below by zooming in and out. Click on markers to learn more about each location.</p>
+                    <iframe class="map-frame" src="hometown_map.html" title="Interactive hometown map with custom Mapbox basemap"></iframe>
+                </div>
+
+                <!-- Reflection Content -->
+                <div class="reflection-section">
+                    <h3>Project Reflection</h3>
+
+                    <!-- Design Inspiration -->
+                    <div class="reflection-box">
+                        <h4>🎨 Design Inspiration</h4>
+                        <p><strong>Basemap Style:</strong> I chose a custom Mapbox style that emphasizes [describe your design choices]</p>
+                        <ul>
+                            <li><strong>Color Palette:</strong> [Describe your colors and their meaning]</li>
+                            <li><strong>Visual Elements:</strong> [What features did you emphasize?]</li>
+                            <li><strong>Inspiration Source:</strong> [What inspired your design?]</li>
+                        </ul>
+                        <div class="key-takeaway">
+                            Key insight: [One sentence about what your design choice communicates]
+                        </div>
+                    </div>
+
+                    <!-- Cartographic Decisions -->
+                    <div class="reflection-box">
+                        <h4>🗺️ Cartographic Challenges</h4>
+                        <p><strong>Multi-Scale Design:</strong> My basemap adapts across zoom levels:</p>
+                        <ul>
+                            <li><strong>World/Regional (Zoom 1-10):</strong> [What's visible? Why?]</li>
+                            <li><strong>Local (Zoom 12+):</strong> [What details appear at street level?]</li>
+                        </ul>
+                        <p><strong>Challenges Overcome:</strong></p>
+                        <ul>
+                            <li>[Challenge 1 and how you solved it]</li>
+                            <li>[Challenge 2 and how you solved it]</li>
+                        </ul>
+                    </div>
+
+                    <!-- Technical Implementation -->
+                    <div class="reflection-box">
+                        <h4>💻 Technical Implementation</h4>
+                        <p><strong>Technology Stack:</strong></p>
+                        <ul>
+                            <li>Mapbox for custom basemap design</li>
+                            <li>Folium for interactive web mapping</li>
+                            <li>Python geocoding for location data</li>
+                            <li>HTML/CSS/JavaScript for integration</li>
+                        </ul>
+                        <p><strong>Key Technical Decisions:</strong></p>
+                        <ul>
+                            <li>[How you handled geocoding]</li>
+                            <li>[How you styled markers/popups]</li>
+                            <li>[How you integrated the custom basemap]</li>
+                        </ul>
+                    </div>
+
+                    <!-- Data & Locations -->
+                    <div class="reflection-box">
+                        <h4>📍 Meaningful Locations</h4>
+                        <p>Each location marker represents a place meaningful to my hometown experience:</p>
+                        <ul>
+                            <li><strong>Hometown:</strong> [City/Area]</li>
+                            <li><strong>Number of Locations:</strong> [How many markers?]</li>
+                            <li><strong>Location Types:</strong> [Landmarks, memories, important places, etc.]</li>
+                        </ul>
+                        <p>The descriptions go beyond generic information to share why each place matters to my personal story.</p>
+                    </div>
+
+                    <!-- Code Understanding -->
+                    <div class="reflection-box">
+                        <h4>🔧 Code Understanding</h4>
+                        <p>I can now explain how the different components work together:</p>
+                        <ul>
+                            <li><strong>Geocoding:</strong> [How addresses become coordinates]</li>
+                            <li><strong>Basemap Integration:</strong> [How custom styles are applied]</li>
+                            <li><strong>Interactivity:</strong> [How popups and markers work]</li>
+                            <li><strong>Web Display:</strong> [How the HTML renders the map]</li>
+                        </ul>
+                    </div>
+
+                    <!-- Self-Assessment -->
+                    <div class="reflection-box">
+                        <h4>⭐ Self-Assessment</h4>
+                        <p><strong>Strengths of this project:</strong></p>
+                        <ul>
+                            <li>[What you're most proud of]</li>
+                            <li>[Unique or creative element]</li>
+                            <li>[Technical achievement]</li>
+                        </ul>
+                        <p><strong>Areas for improvement:</strong></p>
+                        <ul>
+                            <li>[What could be refined]</li>
+                            <li>[Additional features to consider]</li>
+                        </ul>
+                        <p><strong>Overall Rating:</strong> [Rate 1-10] - [Brief explanation]</p>
+                    </div>
+
+                    <!-- Key Takeaway -->
+                    <div class="reflection-box" style="grid-column: 1 / -1;">
+                        <h4>💡 Key Learning</h4>
+                        <p>This project taught me that effective cartography combines three elements: <strong>aesthetic design choices, technical implementation, and meaningful data</strong>. Creating a custom basemap isn't just about making a map look pretty—it's about intentionally communicating information and creating an experience that serves your data and audience.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Details -->
+            <section id="project-details" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #ddd;">
+                <h3>Project Details</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div>
+                        <strong>Skills Demonstrated:</strong>
+                        <ul>
+                            <li>Cartographic design</li>
+                            <li>Web mapping</li>
+                            <li>Geocoding & geospatial data</li>
+                            <li>Interactive design</li>
+                            <li>Python scripting</li>
+                            <li>HTML/CSS/JavaScript</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>Tools & Technologies:</strong>
+                        <ul>
+                            <li>Mapbox Studio</li>
+                            <li>Python & Folium</li>
+                            <li>Mapbox Geocoding API</li>
+                            <li>GitHub for version control</li>
+                            <li>HTML5 & CSS3</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>Resources:</strong>
+                        <ul>
+                            <li><a href="https://studio.mapbox.com" target="_blank">Mapbox Studio</a></li>
+                            <li><a href="https://python-visualization.github.io/folium/" target="_blank">Folium Documentation</a></li>
+                            <li><a href="https://docs.mapbox.com/" target="_blank">Mapbox API Docs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- Footer (if your other labs have it) -->
+    <footer style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #ddd; text-align: center; color: #666;">
+        <p>&copy; 2026 Grant Franklin | DCDA 40833 Skills Portfolio</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/hamburger.js"></script>
+</body>
+</html>
