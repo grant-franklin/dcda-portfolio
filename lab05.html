@@ -1,61 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ============================================
+       HEAD SECTION
+       Contains metadata, title, and styling
+       ============================================ -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Page title displayed in browser tab -->
   <title>Lab 5 | Vibe Coding</title>
+  <!-- Link to external stylesheet for consistent styling across portfolio -->
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    /* Toggle/Accordion Styles */
+    /* ============================================
+       TOGGLE/ACCORDION STYLES
+       These styles create an interactive accordion interface
+       that allows users to expand and collapse experiment sections.
+       Uses gray color scheme for professional appearance.
+       ============================================ */
+
+    /* Container for each toggle section (button + content pair)
+       Adds spacing between consecutive toggle sections */
     .toggle-section {
       margin-bottom: 2rem;
     }
 
+    /* Main toggle button that users click to expand/collapse content
+       Styled as a gray header bar with flexbox layout for icon alignment */
     .toggle-button {
       width: 100%;
       padding: 1rem 1.5rem;
-      background-color: #4CAF50;
+      background-color: #757575; /* Medium gray background */
       color: white;
       border: none;
-      border-radius: 8px 8px 0 0;
+      border-radius: 8px 8px 0 0; /* Rounded corners on top only */
       cursor: pointer;
       font-size: 1.1rem;
       font-weight: bold;
       text-align: left;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background-color 0.3s ease;
+      justify-content: space-between; /* Pushes text and arrow to opposite ends */
+      align-items: center; /* Vertically centers content */
+      transition: background-color 0.3s ease; /* Smooth color transition on hover */
     }
 
+    /* Hover state: button becomes slightly darker gray for visual feedback */
     .toggle-button:hover {
-      background-color: #45a049;
+      background-color: #616161;
     }
 
+    /* Active state: button becomes darker gray when section is expanded */
     .toggle-button.active {
-      background-color: #2e7d32;
+      background-color: #424242;
     }
 
+    /* Arrow icon that rotates when section is toggled
+       Uses CSS transform to indicate open/closed state */
     .toggle-arrow {
       display: inline-block;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease; /* Smooth rotation animation */
       font-size: 1.2rem;
     }
 
+    /* Rotates arrow 180 degrees when button is active (section open) */
     .toggle-button.active .toggle-arrow {
       transform: rotate(180deg);
     }
 
+    /* Hidden content container that expands when toggle button is clicked
+       Initially set to display: none, activated via JavaScript */
     .toggle-content {
       display: none;
       padding: 1.5rem;
-      background-color: #f9f9f9;
-      border-left: 4px solid #4CAF50;
-      border-right: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
-      border-radius: 0 0 8px 8px;
+      background-color: #f9f9f9; /* Light gray background for subtle contrast */
+      border-left: 4px solid #757575; /* Gray accent border on left */
+      border-right: 1px solid #ddd; /* Subtle right border */
+      border-bottom: 1px solid #ddd; /* Subtle bottom border */
+      border-radius: 0 0 8px 8px; /* Rounded corners on bottom only */
     }
 
+    /* Shows content when toggle-content.active class is added via JavaScript */
     .toggle-content.active {
       display: block;
     }
@@ -64,145 +88,249 @@
 
 <body>
 
-<header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="lab02.html">Lab 2</a>
-    <a href="lab03.html">Lab 3</a>
-    <a href="lab04.html">Lab 4</a>
-    <a href="lab05.html" class="active">Lab 5</a>
-  </nav>
-  <h1>Lab 5: AI-Assisted Development</h1>
-</header>
+  <!-- ============================================
+       HEADER SECTION
+       Contains navigation and page title
+       ============================================ -->
+  <header>
+    <!-- Navigation bar with links to other labs -->
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="lab02.html">Lab 2</a>
+      <a href="lab03.html">Lab 3</a>
+      <a href="lab04.html">Lab 4</a>
+      <!-- Marks current page as active for CSS styling -->
+      <a href="lab05.html" class="active">Lab 5</a>
+    </nav>
+    <!-- Page heading -->
+    <h1>Lab 5: AI-Assisted Development</h1>
+  </header>
 
-<main>
+  <!-- ============================================
+       MAIN CONTENT AREA
+       Contains overview and three expandable experiment sections
+       ============================================ -->
+  <main>
 
-  <section id="overview">
-    <h2>Overview</h2>
-    <p>
-      In this lab, I explored AI as a coding collaborator. I completed three experiments: enhancing my
-      portfolio with CSS animations, using Google Colab to analyze NCAA tournament data, and debugging with AI assistance.
-    </p>
-  </section>
+    <!-- ============================================
+         OVERVIEW SECTION
+         Introduces the lab theme and experiments
+         Always visible, not collapsible
+         ============================================ -->
+    <section id="overview">
+      <h2>Overview</h2>
+      <!-- Brief description of the three experiments covered -->
+      <p>
+        In this lab, I explored AI as a coding collaborator. I completed three experiments: enhancing my
+        portfolio with CSS animations, using Google Colab to analyze NCAA tournament data, and debugging with AI assistance.
+      </p>
+    </section>
 
-  <!-- Experiment A: Toggle Section -->
-  <div class="toggle-section">
-    <button class="toggle-button active" onclick="toggleContent(this)">
-      <span>Experiment A: Portfolio Enhancement</span>
-      <span class="toggle-arrow">▼</span>
-    </button>
-    <div class="toggle-content active">
-      <section id="exp-a">
-        <h3>Feature Added</h3>
-        <p>
-          I added CSS animations and transitions to improve the visual experience of my portfolio. This
-          included hover effects on portfolio cards as well as a picture carousel.
-        </p>
-      </section>
+    <!-- ============================================
+         TOGGLE 1: EXPERIMENT A - PORTFOLIO ENHANCEMENT
+         Describes CSS animation enhancements to portfolio
+         Starts in ACTIVE (expanded) state by default
+         ============================================ -->
+    <div class="toggle-section">
+      <!-- Toggle button: user clicks to expand/collapse this section -->
+      <button class="toggle-button active" onclick="toggleContent(this)">
+        <!-- Text label for the experiment -->
+        <span>Experiment A: Portfolio Enhancement</span>
+        <!-- Arrow that rotates when section is toggled -->
+        <span class="toggle-arrow">▼</span>
+      </button>
+      <!-- Hidden content that displays when toggle is clicked -->
+      <div class="toggle-content active">
+        <!-- Experiment A content section -->
+        <section id="exp-a">
+          <!-- Subsection describing the feature -->
+          <h3>Feature Added</h3>
+          <!-- Description of CSS animations and transitions -->
+          <p>
+            I added CSS animations and transitions to improve the visual experience of my portfolio. This
+            included hover effects on portfolio cards as well as a picture carousel.
+          </p>
+        </section>
+      </div>
     </div>
-  </div>
 
-  <!-- Experiment B: Toggle Section -->
-  <div class="toggle-section">
-    <button class="toggle-button" onclick="toggleContent(this)">
-      <span>Experiment B: Python Data Analysis</span>
-      <span class="toggle-arrow">▼</span>
-    </button>
-    <div class="toggle-content">
-      <section id="exp-b">
-        <h3>Research Question</h3>
-        <p>Do NCAA tournament seeds align with FiveThirtyEight power ratings?</p>
+    <!-- ============================================
+         TOGGLE 2: EXPERIMENT B - PYTHON DATA ANALYSIS
+         Describes NCAA tournament data analysis project
+         Includes embedded carousel of analysis charts
+         Starts in CLOSED (collapsed) state
+         ============================================ -->
+    <div class="toggle-section">
+      <!-- Toggle button: user clicks to expand/collapse this section -->
+      <button class="toggle-button" onclick="toggleContent(this)">
+        <!-- Text label for the experiment -->
+        <span>Experiment B: Python Data Analysis</span>
+        <!-- Arrow that rotates when section is toggled -->
+        <span class="toggle-arrow">▼</span>
+      </button>
+      <!-- Hidden content that displays when toggle is clicked -->
+      <div class="toggle-content">
+        <!-- Experiment B content section -->
+        <section id="exp-b">
+          <!-- Research question subsection -->
+          <h3>Research Question</h3>
+          <!-- Primary research question being investigated -->
+          <p>Do NCAA tournament seeds align with FiveThirtyEight power ratings?</p>
 
-        <h3>Analysis Summary</h3>
-        <p>For Experiment B, I used Google Collab and AI-generated Python code to analyze NCAA tournament seeding compared to FiveThirtyEight power ratings. I used pandas and matplotlib to create a scatter plot of Seed versus Power Rating and additional visualizations showing rating distributions. The scatter plot allowed for a broader visual assessment of the correlation between model rankings and official seeding. While higher seeds generally corresponded to stronger power ratings, I did notice some inconsistencies. While outliers where lower seeds have power ratings higher than teams above them exist, my focus was on certain teams under this category. Mid-major conferences and teams get systematically punished with the MVC (83%) leading – the committee favors these conference power brands over quality power ratings. Overall, this experiment demonstrated how AI can speed up technical implementation while still requiring human usage and critical evaluation.</p>
+          <!-- Analysis summary subsection -->
+          <h3>Analysis Summary</h3>
+          <!-- Detailed summary of the analysis and findings -->
+          <p>For Experiment B, I used Google Collab and AI-generated Python code to analyze NCAA tournament seeding compared to FiveThirtyEight power ratings. I used pandas and matplotlib to create a scatter plot of Seed versus Power Rating and additional visualizations showing rating distributions. The scatter plot allowed for a broader visual assessment of the correlation between model rankings and official seeding. While higher seeds generally corresponded to stronger power ratings, I did notice some inconsistencies. While outliers where lower seeds have power ratings higher than teams above them exist, my focus was on certain teams under this category. Mid-major conferences and teams get systematically punished with the MVC (83%) leading – the committee favors these conference power brands over quality power ratings. Overall, this experiment demonstrated how AI can speed up technical implementation while still requiring human usage and critical evaluation.</p>
 
-        <h3>Charts Carousel</h3>
-        <p>Use the arrows to view each chart screenshot.</p>
+          <!-- Charts carousel subsection -->
+          <h3>Charts Carousel</h3>
+          <!-- Instructions for using the carousel -->
+          <p>Use the arrows to view each chart screenshot.</p>
 
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn prev" type="button" aria-label="Previous slide" data-carousel-prev>
-            ‹
-          </button>
+          <!-- Carousel container with previous/next navigation buttons -->
+          <div class="carousel" data-carousel>
+            <!-- Previous slide button -->
+            <button class="carousel-btn prev" type="button" aria-label="Previous slide" data-carousel-prev>
+              ‹
+            </button>
 
-          <div class="carousel-viewport">
-            <div class="carousel-track" data-carousel-track>
-              <figure class="carousel-slide is-active">
-                <img src="images/PRvTR.png" alt="Chart 1: Seed vs Power Rating scatter plot">
-                <figcaption>Chart 1: Seed vs Power Rating</figcaption>
-              </figure>
+            <!-- Carousel viewport: visible area containing current slide -->
+            <div class="carousel-viewport">
+              <!-- Carousel track: contains all slides, slides horizontally -->
+              <div class="carousel-track" data-carousel-track>
+                <!-- Slide 1: Seed vs Power Rating scatter plot -->
+                <figure class="carousel-slide is-active">
+                  <img src="images/PRvTR.png" alt="Chart 1: Seed vs Power Rating scatter plot">
+                  <figcaption>Chart 1: Seed vs Power Rating</figcaption>
+                </figure>
 
-              <figure class="carousel-slide">
-                <img src="images/APR_SEED.png" alt="Chart 2: Power rating distribution by seed">
-                <figcaption>Chart 2: Power Rating by Seed</figcaption>
-              </figure>
-
-              <figure class="carousel-slide">
-                <img src="images/SvPR.png" alt="Chart 3: Additional chart from Colab analysis">
-                <figcaption>Chart 3: Additional analysis</figcaption>
-              </figure>
-
+                <!-- Slide 2: Power rating distribution by seed -->
                 <figure class="carousel-slide">
-                <img src="images/TOP100PR.png" alt="Chart 4: Power rating distribution by seed">
-                <figcaption>Chart 4: Power Rating by Seed</figcaption>
-              </figure>
+                  <img src="images/APR_SEED.png" alt="Chart 2: Power rating distribution by seed">
+                  <figcaption>Chart 2: Power Rating by Seed</figcaption>
+                </figure>
+
+                <!-- Slide 3: Additional analysis chart -->
+                <figure class="carousel-slide">
+                  <img src="images/SvPR.png" alt="Chart 3: Additional chart from Colab analysis">
+                  <figcaption>Chart 3: Additional analysis</figcaption>
+                </figure>
+
+                <!-- Slide 4: Power rating distribution by seed (continued) -->
+                <figure class="carousel-slide">
+                  <img src="images/TOP100PR.png" alt="Chart 4: Power rating distribution by seed">
+                  <figcaption>Chart 4: Power Rating by Seed</figcaption>
+                </figure>
+              </div>
             </div>
+
+            <!-- Next slide button -->
+            <button class="carousel-btn next" type="button" aria-label="Next slide" data-carousel-next>
+              ›
+            </button>
           </div>
 
-          <button class="carousel-btn next" type="button" aria-label="Next slide" data-carousel-next>
-            ›
-          </button>
-        </div>
-
-        <p>
-          <a href="Lab5_MarchMadness_Model_vs_Seed.ipynb" target="_blank">
-            View Full Google Colab Notebook
-          </a>
-        </p>
-      </section>
+          <!-- Link to full Jupyter notebook -->
+          <p>
+            <a href="Lab5_MarchMadness_Model_vs_Seed.ipynb" target="_blank">
+              View Full Google Colab Notebook
+            </a>
+          </p>
+        </section>
+      </div>
     </div>
-  </div>
 
-  <!-- Experiment C: Toggle Section -->
-  <div class="toggle-section">
-    <button class="toggle-button" onclick="toggleContent(this)">
-      <span>Experiment C: Debugging With AI</span>
-      <span class="toggle-arrow">▼</span>
-    </button>
-    <div class="toggle-content">
-      <section id="exp-c">
+    <!-- ============================================
+         TOGGLE 3: EXPERIMENT C - DEBUGGING WITH AI
+         Describes debugging process using AI assistance
+         Documents the carousel bug and solution
+         Starts in CLOSED (collapsed) state
+         ============================================ -->
+    <div class="toggle-section">
+      <!-- Toggle button: user clicks to expand/collapse this section -->
+      <button class="toggle-button" onclick="toggleContent(this)">
+        <!-- Text label for the experiment -->
+        <span>Experiment C: Debugging With AI</span>
+        <!-- Arrow that rotates when section is toggled -->
+        <span class="toggle-arrow">▼</span>
+      </button>
+      <!-- Hidden content that displays when toggle is clicked -->
+      <div class="toggle-content">
+        <!-- Experiment C content section -->
+        <section id="exp-c">
 
-    <h3>The Bug</h3>
-    <p>The image carousel on my Lab05.HTML page was displaying the carousel and arrows, but would only display the first slide. I expected the next (arrow) buttons to cycle through all four chart images, but clicking them had no visible effect.</p>
+          <!-- The Bug subsection: describes the problem -->
+          <h3>The Bug</h3>
+          <!-- Description of the carousel malfunction -->
+          <p>The image carousel on my Lab05.HTML page was displaying the carousel and arrows, but would only display the first slide. I expected the next (arrow) buttons to cycle through all four chart images, but clicking them had no visible effect.</p>
 
-    <h3>My Attempt Before AI</h3>
-    <p>The fist thing I checked was to make sure my carousel.js file to see if my structure was correct. I also checked the CSS and confirmed the carousel styling was properly set up. My last and final check was to see if my charts had possibly loaded incorrectly or out of place. I couldn't immediately see what was wrong because there were no obvious syntax errors.</p>
+          <!-- My Attempt Before AI subsection: describes debugging efforts -->
+          <h3>My Attempt Before AI</h3>
+          <!-- Summary of troubleshooting steps taken before using AI -->
+          <p>The fist thing I checked was to make sure my carousel.js file to see if my structure was correct. I also checked the CSS and confirmed the carousel styling was properly set up. My last and final check was to see if my charts had possibly loaded incorrectly or out of place. I couldn't immediately see what was wrong because there were no obvious syntax errors.</p>
 
-    <h3>AI Fix and Evaluation</h3>
-    <p>With CLAUDE AI assistance, I identified that the Carousel file existed and the logic was sound, but the file path structure was the actual problem. I did not use Copilot to create the file, and instead manually created the folder, but under “css”. The js/ folder was nested incorrectly relative to the HTML file, so carousel.js was never loading at all — the buttons had no event listeners attached. The fix was repositioning the js/ folder to sit at the same level as css/ and the HTML files. The JS itself required no changes.</p>
+          <!-- AI Fix and Evaluation subsection: describes the solution -->
+          <h3>AI Fix and Evaluation</h3>
+          <!-- Explanation of how AI helped identify and solve the problem -->
+          <p>With CLAUDE AI assistance, I identified that the Carousel file existed and the logic was sound, but the file path structure was the actual problem. I did not use Copilot to create the file, and instead manually created the folder, but under "css". The js/ folder was nested incorrectly relative to the HTML file, so carousel.js was never loading at all — the buttons had no event listeners attached. The fix was repositioning the js/ folder to sit at the same level as css/ and the HTML files. The JS itself required no changes.</p>
 
-        <h3>What I Learned</h3>
-        <p>The most valuable lesson was that bugs aren't always in the code itself and that sometimes the issue is environmental. It is important to double-check every process from the root, even the seamless pieces like creating your files and folders. I spent too much time focusing on the coding issues when I could have easily looked into my portfolio files and found the problem.</p>
-      </section>
+          <!-- What I Learned subsection: describes key takeaways -->
+          <h3>What I Learned</h3>
+          <!-- Key lessons from the debugging experience -->
+          <p>The most valuable lesson was that bugs aren't always in the code itself and that sometimes the issue is environmental. It is important to double-check every process from the root, even the seamless pieces like creating your files and folders. I spent too much time focusing on the coding issues when I could have easily looked into my portfolio files and found the problem.</p>
+        </section>
+      </div>
     </div>
-  </div>
 
-</main>
+  </main>
 
-<footer>
-  <p>&copy; 2026 Grant Franklin</p>
-</footer>
+  <!-- ============================================
+       FOOTER SECTION
+       Contains copyright information
+       ============================================ -->
+  <footer>
+    <!-- Copyright notice -->
+    <p>&copy; 2026 Grant Franklin</p>
+  </footer>
 
-<script src="js/carousel.js"></script>
-<script>
-  function toggleContent(button) {
-    const content = button.nextElementSibling;
-    const isActive = button.classList.contains('active');
-    
-    // Toggle the active class
-    button.classList.toggle('active');
-    content.classList.toggle('active');
-  }
-</script>
+  <!-- ============================================
+       SCRIPTS
+       External carousel functionality and toggle logic
+       ============================================ -->
+  <!-- External carousel script for slide navigation functionality -->
+  <script src="js/carousel.js"></script>
+  <script>
+    /**
+     * toggleContent function
+     * Purpose: Toggle the visibility of content sections when buttons are clicked
+     * 
+     * Parameters:
+     *   button - The button element that was clicked (button.toggle-button)
+     * 
+     * How it works:
+     *   1. Gets the next element (toggle-content div) that immediately follows the button
+     *   2. Toggles the 'active' class on both the button and the content container
+     *   3. CSS handles showing/hiding and styling changes based on the active class presence
+     *   4. Smooth transitions create a polished expand/collapse animation
+     */
+    function toggleContent(button) {
+      // Get the content div that immediately follows the button in the DOM
+      const content = button.nextElementSibling;
+      
+      // Check if button currently has 'active' class (for potential logic purposes)
+      const isActive = button.classList.contains('active');
+      
+      // Toggle the active class on the button element
+      // This changes button color from medium gray to darker gray
+      // and rotates the arrow icon 180 degrees
+      button.classList.toggle('active');
+      
+      // Toggle the active class on the content div element
+      // This changes display property from 'none' to 'block'
+      // making the hidden content visible to the user
+      content.classList.toggle('active');
+    }
+  </script>
 
 </body>
 </html>
