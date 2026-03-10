@@ -6,77 +6,109 @@
     <title>Visualization Critique | Grant Franklin</title>
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        /* Toggle/Accordion Styles */
+        /* ============================================
+           TOGGLE/ACCORDION STYLES
+           These styles create an interactive accordion interface
+           that allows users to expand and collapse critique sections.
+           ============================================ */
+
+        /* Container for each toggle section (button + content pair) */
         .toggle-section {
             margin-bottom: 1.5rem;
         }
 
+        /* Main toggle button that users click to expand/collapse content
+           Styled as a green header bar with flexbox layout for icon alignment */
         .toggle-button {
             width: 100%;
             padding: 1rem 1.5rem;
-            background-color: #0f004d;
+            background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 8px 8px 0 0;
+            border-radius: 8px 8px 0 0; /* Rounded corners on top only */
             cursor: pointer;
             font-size: 1.1rem;
             font-weight: bold;
             text-align: left;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.3s ease;
+            justify-content: space-between; /* Pushes text and arrow to opposite ends */
+            align-items: center; /* Vertically centers content */
+            transition: background-color 0.3s ease; /* Smooth color transition on hover */
         }
 
+        /* Hover state: button becomes slightly darker green for visual feedback */
         .toggle-button:hover {
-            background-color: #bbbbbb;
+            background-color: #45a049;
         }
 
+        /* Active state: button becomes darker green when section is expanded */
         .toggle-button.active {
-            background-color: #a8a8a8;
+            background-color: #2e7d32;
         }
 
+        /* Arrow icon that rotates when section is toggled
+           Uses CSS transform to indicate open/closed state */
         .toggle-arrow {
             display: inline-block;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease; /* Smooth rotation animation */
             font-size: 1.2rem;
         }
 
+        /* Rotates arrow 180 degrees when button is active (section open) */
         .toggle-button.active .toggle-arrow {
             transform: rotate(180deg);
         }
 
+        /* Hidden content container that expands when toggle button is clicked
+           Initially set to display: none, activated via JavaScript */
         .toggle-content {
             display: none;
             padding: 1.5rem;
-            background-color: #f9f9f9;
-            border-left: 4px solid #00237d;
-            border-right: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
-            border-radius: 0 0 8px 8px;
+            background-color: #f9f9f9; /* Light gray background for subtle contrast */
+            border-left: 4px solid #4CAF50; /* Green accent border on left */
+            border-right: 1px solid #ddd; /* Subtle right border */
+            border-bottom: 1px solid #ddd; /* Subtle bottom border */
+            border-radius: 0 0 8px 8px; /* Rounded corners on bottom only */
         }
 
+        /* Shows content when toggle-content.active class is added via JavaScript */
         .toggle-content.active {
             display: block;
         }
     </style>
 </head>
 <body>
+    <!-- ============================================
+         HEADER SECTION
+         Contains navigation and page title
+         ============================================ -->
     <header>
+        <!-- Navigation bar with links to other labs -->
         <nav>
             <a href="index.html">Home</a>
             <a href="lab02.html">Lab 2: AI Evaluation</a>
+            <!-- Marks current page as active for CSS styling -->
             <a href="lab03.html" class="active">Lab 3: Visualization Critique</a>
             <!-- Add more lab links as the semester progresses -->
         </nav>
         <h1>Visualization Critique</h1>
     </header>
 
+    <!-- ============================================
+         MAIN CONTENT AREA
+         Contains the visualization and critique sections
+         ============================================ -->
     <main>
+        <!-- ============================================
+             VISUALIZATION SECTION
+             Displays the image being critiqued with source attribution
+             ============================================ -->
         <section>
             <h2>Visualization</h2>
+            <!-- Figure element for semantic HTML: contains image + caption -->
             <figure>
                 <img src="images/BillionaireVisual.png" alt="Visualization showing how many days it would take ultra-wealthy individuals to donate one billion dollars.">
+                <!-- Caption provides title and source information -->
                 <figcaption>
                     <strong>Title:</strong> $1bn Is a Drop in the Ocean for the Worlds Ultra-Rich<br>
                     <strong>Source:</strong> 
@@ -87,16 +119,29 @@
             </figure>
         </section>
 
+        <!-- ============================================
+             CRITIQUE SECTION
+             Contains three expandable toggle sections for detailed analysis
+             ============================================ -->
         <section>
             <h2>Critique</h2>
             
-            <!-- Information Resolution Toggle -->
+            <!-- ============================================
+                 TOGGLE 1: INFORMATION RESOLUTION
+                 Examines how the visualization presents data clarity
+                 Starts in ACTIVE (expanded) state by default
+                 ============================================ -->
             <div class="toggle-section">
+                <!-- Toggle button: user clicks to expand/collapse this section -->
                 <button class="toggle-button active" onclick="toggleContent(this)">
+                    <!-- Text label with emoji for visual identification -->
                     <span>Information Resolution</span>
+                    <!-- Arrow that rotates when section is toggled -->
                     <span class="toggle-arrow">▼</span>
                 </button>
+                <!-- Hidden content that displays when toggle is clicked -->
                 <div class="toggle-content active">
+                    <!-- Three paragraphs explaining information resolution concept -->
                     <p>
                         Through Edward Tufte's idea of informational "resolution," this chart delivers clarity at first glance yet squeezes out much surrounding detail. It measures how many days it would take select billionaires to give away a billion dollars. Take Warren Buffett: he'd manage it in 126 days; Michael Bloomberg, however, would require 606. By turning vast sums into durations, the design grounds staggering figures in everyday experience. Time becomes a bridge, something familiar replacing something remote. At first sight, its strength shines through simplicity: proportions match perception, the message sticks. What stands out is immediate; what lies beneath stays hidden.
                     </p>
@@ -109,13 +154,22 @@
                 </div>
             </div>
 
-            <!-- Effects without Causes Toggle -->
+            <!-- ============================================
+                 TOGGLE 2: EFFECTS WITHOUT CAUSES
+                 Analyzes what the visualization omits regarding systemic causes
+                 Starts in CLOSED (collapsed) state
+                 ============================================ -->
             <div class="toggle-section">
+                <!-- Toggle button: user clicks to expand/collapse this section -->
                 <button class="toggle-button" onclick="toggleContent(this)">
+                    <!-- Text label with emoji for visual identification -->
                     <span>Effects without Causes</span>
+                    <!-- Arrow that rotates when section is toggled -->
                     <span class="toggle-arrow">▼</span>
                 </button>
+                <!-- Hidden content that displays when toggle is clicked -->
                 <div class="toggle-content">
+                    <!-- Three paragraphs discussing missing causal context -->
                     <p>
                         What stands out most about the display is not just its clarity, but what it leaves unexamined. The effect is clear: individuals with extreme wealth can give away a billion dollars quickly while experiencing little personal impact. What remains absent are the causes that make this possible. The visualization does not address economic systems, tax structures, investment growth, or inheritance practices that allow wealth to accumulate at such scales.
                     </p>
@@ -128,13 +182,22 @@
                 </div>
             </div>
 
-            <!-- Overreaching Conclusion Toggle -->
+            <!-- ============================================
+                 TOGGLE 3: OVERREACHING CONCLUSION
+                 Critiques how the visualization extends beyond its data support
+                 Starts in CLOSED (collapsed) state
+                 ============================================ -->
             <div class="toggle-section">
+                <!-- Toggle button: user clicks to expand/collapse this section -->
                 <button class="toggle-button" onclick="toggleContent(this)">
+                    <!-- Text label with emoji for visual identification -->
                     <span>Overreaching Conclusion</span>
+                    <!-- Arrow that rotates when section is toggled -->
                     <span class="toggle-arrow">▼</span>
                 </button>
+                <!-- Hidden content that displays when toggle is clicked -->
                 <div class="toggle-content">
+                    <!-- Two paragraphs discussing overreaching implications -->
                     <p>
                         While one billion dollars appears small compared to the fortunes displayed, the surrounding language subtly extends the argument beyond what the data alone supports. Phrases such as "money they don't need, going to people who do" frame philanthropy as an obvious and sufficient remedy. The visualization does not examine whether these donations are effective, accountable, or capable of producing lasting change.
                     </p>
@@ -144,9 +207,14 @@
                 </div>
             </div>
 
-            <!-- Conclusion Section (Not in toggle) -->
+            <!-- ============================================
+                 CONCLUSION SECTION (Not in toggle)
+                 Provides overall summary of the critique analysis
+                 Always visible, not collapsible
+                 ============================================ -->
             <section style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #ddd;">
                 <h3>Overall Conclusion</h3>
+                <!-- Final summary paragraph synthesizing all critique points -->
                 <p>
                     Overall, the visualization succeeds as a striking and accessible visual argument. Translating immense wealth into time makes the scale of inequality immediately understandable. However, under Tufte's principles, clarity alone is not enough. By omitting methodological transparency, causal explanation, and broader context, the graphic limits deeper understanding and invites conclusions that extend beyond the data shown. Including clearer explanations of how figures were calculated and situating them within wider economic patterns would significantly strengthen both credibility and interpretive depth.
                 </p>
@@ -154,16 +222,41 @@
         </section>
     </main>
 
+    <!-- ============================================
+         FOOTER SECTION
+         Contains copyright information
+         ============================================ -->
     <footer>
         <p>© 2026 Grant Franklin</p>
     </footer>
 
+    <!-- ============================================
+         TOGGLE FUNCTIONALITY JAVASCRIPT
+         Handles the expand/collapse behavior of toggle sections
+         ============================================ -->
     <script>
+        /**
+         * toggleContent function
+         * Purpose: Toggle the visibility of content sections when buttons are clicked
+         * 
+         * Parameters:
+         *   button - The button element that was clicked
+         * 
+         * How it works:
+         *   1. Gets the next element (toggle-content div) after the button
+         *   2. Toggles the 'active' class on both button and content
+         *   3. CSS handles showing/hiding and styling based on active class
+         */
         function toggleContent(button) {
+            // Get the content div that immediately follows the button in the DOM
             const content = button.nextElementSibling;
             
-            // Toggle the active class
+            // Toggle the active class on the button
+            // This changes button color and rotates the arrow
             button.classList.toggle('active');
+            
+            // Toggle the active class on the content div
+            // This changes display from 'none' to 'block'
             content.classList.toggle('active');
         }
     </script>
