@@ -11,7 +11,7 @@
         /* Lab 6 specific styles */
         .lab6-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 2rem;
             margin-bottom: 3rem;
         }
@@ -30,18 +30,64 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
+        /* Toggle/Accordion Styles */
+        .toggle-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .toggle-button {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-button:hover {
+            background-color: #45a049;
+        }
+
+        .toggle-button.active {
+            background-color: #2e7d32;
+        }
+
+        .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .toggle-button.active .toggle-arrow {
+            transform: rotate(180deg);
+        }
+
+        .toggle-content {
+            display: none;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .toggle-content.active {
+            display: block;
+        }
+
         .reflection-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
-        }
-
-        .reflection-section h3 {
-            grid-column: 1 / -1;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 0.5rem;
         }
 
         .reflection-box {
@@ -73,10 +119,6 @@
         }
 
         @media (max-width: 900px) {
-            .lab6-container {
-                grid-template-columns: 1fr;
-            }
-
             .reflection-section {
                 grid-template-columns: 1fr;
             }
@@ -130,22 +172,16 @@
                     <iframe class="map-frame" src="hometown_map.html" title="Interactive hometown map with custom Mapbox basemap"></iframe>
                 </div>
 
-                <!-- Reflection Content -->
-                <div class="reflection-section">
-                    <h3>Project Reflection</h3>
-
-                    <!-- Design Inspiration -->
-                    <div class="reflection-box">
+                <!-- Reflection Content - Toggle Section -->
+                <div class="toggle-section">
+                    <button class="toggle-button active" onclick="toggleContent(this)">
+                        <span>📋 Project Reflection</span>
+                        <span class="toggle-arrow">▼</span>
+                    </button>
+                    <div class="toggle-content active">
+                        <div class="reflection-section">
                         <h4>🎨 Design Inspiration</h4>
-                        <p><strong>Basemap Style:</strong> For my design for my basemap my goal was to make it a simple to use as possible. I chose regular styles you would see on most interactive maps keeping land and water components tan (desert like) and blue. I wanted the map to feel sleep but detailed adding variations for colors for different types of roads, monuments, and geo locations. I also kept the overall palette simple so that my hometown pop up locations are clear and visible. chose a custom Mapbox style that emphasizes</p>
-                        <ul>
-                            <li><strong>Color Palette:</strong> [Describe your colors and their meaning]</li>
-                            <li><strong>Visual Elements:</strong> [What features did you emphasize?]</li>
-                            <li><strong>Inspiration Source:</strong> [What inspired your design?]</li>
-                        </ul>
-                        <div class="key-takeaway">
-                            Key insight: [One sentence about what your design choice communicates]
-                        </div>
+                        <p><strong>Basemap Style:</strong> For my design for my basemap my goal was to make it a simple to use as possible. I chose regular styles you would see on most interactive maps keeping land and water components tan (desert like) and blue. I wanted the map to feel sleep but detailed adding variations for colors for different types of roads, monuments, and geo locations. I also kept the overall palette simple so that my hometown pop up locations are clear and visible.</p>
                     </div>
 
                     <!-- Cartographic Decisions -->
@@ -193,46 +229,22 @@
                         <p>The descriptions go beyond generic information to share why each place matters to my personal story.</p>
                     </div>
 
-                    <!-- Code Understanding -->
-                    <div class="reflection-box">
-                        <h4>🔧 Code Understanding</h4>
-                        <p>I can now explain how the different components work together:</p>
-                        <ul>
-                            <li><strong>Geocoding:</strong> [How addresses become coordinates]</li>
-                            <li><strong>Basemap Integration:</strong> [How custom styles are applied]</li>
-                            <li><strong>Interactivity:</strong> [How popups and markers work]</li>
-                            <li><strong>Web Display:</strong> [How the HTML renders the map]</li>
-                        </ul>
-                    </div>
-
-                    <!-- Self-Assessment -->
-                    <div class="reflection-box">
-                        <h4>⭐ Self-Assessment</h4>
-                        <p><strong>Strengths of this project:</strong></p>
-                        <ul>
-                            <li>[What you're most proud of]</li>
-                            <li>[Unique or creative element]</li>
-                            <li>[Technical achievement]</li>
-                        </ul>
-                        <p><strong>Areas for improvement:</strong></p>
-                        <ul>
-                            <li>[What could be refined]</li>
-                            <li>[Additional features to consider]</li>
-                        </ul>
-                        <p><strong>Overall Rating:</strong> [Rate 1-10] - [Brief explanation]</p>
-                    </div>
-
                     <!-- Key Takeaway -->
                     <div class="reflection-box" style="grid-column: 1 / -1;">
                         <h4>💡 Key Learning</h4>
                         <p>This project taught me that effective cartography combines three elements: <strong>aesthetic design choices, technical implementation, and meaningful data</strong>. Creating a custom basemap isn't just about making a map look pretty—it's about intentionally communicating information and creating an experience that serves your data and audience.</p>
                     </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Project Details -->
-            <section id="project-details" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #ddd;">
-                <h3>Project Details</h3>
+            <!-- Project Details - Toggle Section -->
+            <div class="toggle-section">
+                <button class="toggle-button" onclick="toggleContent(this)">
+                    <span>📊 Project Details</span>
+                    <span class="toggle-arrow">▼</span>
+                </button>
+                <div class="toggle-content">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
                     <div>
                         <strong>Skills Demonstrated:</strong>
@@ -264,7 +276,8 @@
                         </ul>
                     </div>
                 </div>
-            </section>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -275,5 +288,15 @@
 
     <!-- Scripts -->
     <script src="js/hamburger.js"></script>
+    <script>
+        function toggleContent(button) {
+            const content = button.nextElementSibling;
+            const isActive = button.classList.contains('active');
+            
+            // Toggle the active class
+            button.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
