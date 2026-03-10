@@ -5,20 +5,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Evaluation | Grant Franklin</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* ============================================
+           TOGGLE/ACCORDION STYLES
+           These styles create an interactive accordion interface
+           that allows users to expand and collapse evaluation sections.
+           Uses gray color scheme for professional appearance.
+           ============================================ */
+
+        /* Container for each toggle section (button + content pair)
+           Adds spacing between consecutive toggle sections */
+        .toggle-section {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Main toggle button that users click to expand/collapse content
+           Styled as a gray header bar with flexbox layout for icon alignment */
+        .toggle-button {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background-color: #757575; /* Medium gray background */
+            color: white;
+            border: none;
+            border-radius: 8px 8px 0 0; /* Rounded corners on top only */
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: left;
+            display: flex;
+            justify-content: space-between; /* Pushes text and arrow to opposite ends */
+            align-items: center; /* Vertically centers content */
+            transition: background-color 0.3s ease; /* Smooth color transition on hover */
+        }
+
+        /* Hover state: button becomes slightly darker gray for visual feedback */
+        .toggle-button:hover {
+            background-color: #616161;
+        }
+
+        /* Active state: button becomes darker gray when section is expanded */
+        .toggle-button.active {
+            background-color: #424242;
+        }
+
+        /* Arrow icon that rotates when section is toggled
+           Uses CSS transform to indicate open/closed state */
+        .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease; /* Smooth rotation animation */
+            font-size: 1.2rem;
+        }
+
+        /* Rotates arrow 180 degrees when button is active (section open) */
+        .toggle-button.active .toggle-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Hidden content container that expands when toggle button is clicked
+           Initially set to display: none, activated via JavaScript */
+        .toggle-content {
+            display: none;
+            padding: 1.5rem;
+            background-color: #f5f5f5; /* Very light gray background for subtle contrast */
+            border-left: 4px solid #757575; /* Gray accent border on left */
+            border-right: 1px solid #ddd; /* Subtle right border */
+            border-bottom: 1px solid #ddd; /* Subtle bottom border */
+            border-radius: 0 0 8px 8px; /* Rounded corners on bottom only */
+        }
+
+        /* Shows content when toggle-content.active class is added via JavaScript */
+        .toggle-content.active {
+            display: block;
+        }
+
+        /* Styling for subsections within toggle content
+           Adds visual structure for nested content */
+        .toggle-content h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #333;
+        }
+
+        .toggle-content h3:first-child {
+            margin-top: 0;
+        }
+
+        /* Styling for paragraphs within toggle content */
+        .toggle-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
+    <!-- ============================================
+         HEADER SECTION
+         Contains navigation and page title
+         ============================================ -->
     <header>
+        <!-- Navigation bar with links to other labs -->
         <nav>
             <a href="index.html">Home</a>
+            <!-- Marks current page as active for CSS styling -->
             <a href="lab02.html" class="active">Lab 2: AI Evaluation</a>
         </nav>
         <h1>AI Tool Evaluation</h1>
     </header>
 
+    <!-- ============================================
+         MAIN CONTENT AREA
+         Contains introduction and three expandable evaluation sections
+         ============================================ -->
     <main>
+        <!-- ============================================
+             INTRODUCTION SECTION
+             Provides context for the AI tool evaluation
+             Always visible, not collapsible
+             ============================================ -->
         <section>
-
             <h2>Introduction</h2>
+            <!-- Brief overview explaining the purpose of the lab -->
             <p>
                 AI tools are increasingly embedded in digital culture, creative work, and data analysis.
                 For this lab, I evaluated two AI tools from different categories: ChatGPT (text and code
@@ -30,89 +136,178 @@
             </p>
         </section>
 
-        <section>
-            <h2>Tool 1: ChatGPT</h2>
+        <!-- ============================================
+             TOGGLE 1: TOOL 1 - CHATGPT
+             Evaluates ChatGPT capabilities, appropriate use, and ethical considerations
+             Starts in CLOSED (collapsed) state
+             ============================================ -->
+        <div class="toggle-section">
+            <!-- Toggle button: user clicks to expand/collapse this section -->
+            <button class="toggle-button" onclick="toggleContent(this)">
+                <!-- Text label with emoji for visual identification -->
+                <span>Tool 1: ChatGPT</span>
+                <!-- Arrow that rotates when section is toggled -->
+                <span class="toggle-arrow">▼</span>
+            </button>
+            <!-- Hidden content that displays when toggle is clicked -->
+            <div class="toggle-content">
+                <!-- Capabilities subsection explaining what ChatGPT does well -->
+                <h3>Capabilities</h3>
+                <!-- Screenshot and description of ChatGPT's strengths -->
+                <p><img src="images/Chat1.png" alt="ChatGPT screenshot" class="screenshot">
+                    ChatGPT performs well at generating structured text, brainstorming ideas, summarizing
+                    concepts, and assisting with code explanations. During testing, I used it to outline
+                    academic reflections, explain HTML structure, and generate draft analyses. Output quality
+                    improved significantly when prompts were detailed and specific. However, the tool
+                    struggles with factual precision at times and can sound overly confident even when
+                    incorrect. It also tends to generalize unless pushed with constraints or examples.
+                </p>
 
-            <h3>Capabilities</h3>
-            <p><img src="images/Chat1.png" alt="ChatGPT screenshot" class="screenshot">
-                ChatGPT performs well at generating structured text, brainstorming ideas, summarizing
-                concepts, and assisting with code explanations. During testing, I used it to outline
-                academic reflections, explain HTML structure, and generate draft analyses. Output quality
-                improved significantly when prompts were detailed and specific. However, the tool
-                struggles with factual precision at times and can sound overly confident even when
-                incorrect. It also tends to generalize unless pushed with constraints or examples.
-            </p>
+                <!-- Appropriate Use subsection explaining best practices for ChatGPT -->
+                <h3>Appropriate Use</h3>
+                <p>
+                    ChatGPT is best used as a drafting and thinking partner rather than a final authority.
+                    It fits well into workflows that involve idea generation, early-stage writing, and
+                    learning unfamiliar technical concepts. Poor use cases include submitting AI-generated
+                    text as final academic work without revision or relying on it for original analysis or
+                    citation-heavy research. Human judgment is essential for interpretation, accuracy, and
+                    voice.
+                </p>
 
-            <h3>Appropriate Use</h3>
-            <p>
-                ChatGPT is best used as a drafting and thinking partner rather than a final authority.
-                It fits well into workflows that involve idea generation, early-stage writing, and
-                learning unfamiliar technical concepts. Poor use cases include submitting AI-generated
-                text as final academic work without revision or relying on it for original analysis or
-                citation-heavy research. Human judgment is essential for interpretation, accuracy, and
-                voice.
-            </p>
+                <!-- Ethical Considerations subsection discussing concerns around ChatGPT -->
+                <h3>Ethical Considerations</h3>
+                <p><img src="images/Chat2.png" alt="ChatGPT screenshot" class="screenshot">
+                    ChatGPT is trained on a mixture of licensed data, human-created content, and publicly
+                    available text, which raises concerns about bias and authorship. The model can reproduce
+                    dominant cultural perspectives while marginalizing others. While safeguards exist to
+                    limit harmful content, gaps remain around attribution and overreliance. Users are
+                    responsible for ensuring originality and proper citation when using outputs.
+                </p>
+            </div>
+        </div>
 
-            <h3>Ethical Considerations</h3>
-            <p><img src="images/Chat2.png" alt="ChatGPT screenshot" class="screenshot">
-                ChatGPT is trained on a mixture of licensed data, human-created content, and publicly
-                available text, which raises concerns about bias and authorship. The model can reproduce
-                dominant cultural perspectives while marginalizing others. While safeguards exist to
-                limit harmful content, gaps remain around attribution and overreliance. Users are
-                responsible for ensuring originality and proper citation when using outputs.
-            </p>
-        </section>
+        <!-- ============================================
+             TOGGLE 2: TOOL 2 - ADOBE FIREFLY
+             Evaluates Adobe Firefly capabilities, appropriate use, and ethical considerations
+             Starts in CLOSED (collapsed) state
+             ============================================ -->
+        <div class="toggle-section">
+            <!-- Toggle button: user clicks to expand/collapse this section -->
+            <button class="toggle-button" onclick="toggleContent(this)">
+                <!-- Text label with emoji for visual identification -->
+                <span>Tool 2: Adobe Firefly</span>
+                <!-- Arrow that rotates when section is toggled -->
+                <span class="toggle-arrow">▼</span>
+            </button>
+            <!-- Hidden content that displays when toggle is clicked -->
+            <div class="toggle-content">
+                <!-- Capabilities subsection explaining what Adobe Firefly does well -->
+                <h3>Capabilities</h3>
+                <!-- Screenshot and description of Firefly's strengths -->
+                <p><img src="images/Adobe.png" alt="Adobe Firefly screenshot" class="screenshot">
+                    Adobe Firefly excels at generating images from text prompts and integrating AI into
+                    familiar design workflows. I tested it by generating conceptual images related to media
+                    critique and digital culture themes. Firefly produces clean, visually polished images,
+                    especially for illustrative purposes. Its limitations appear when prompts
+                    require very specific details or realism, where outputs can feel generic or repetitive.
+                </p>
 
-        <section>
-            <h2>Tool 2: Adobe Firefly</h2>
+                <!-- Appropriate Use subsection explaining best practices for Firefly -->
+                <h3>Appropriate Use</h3>
+                <p>
+                    Firefly is well suited for concept art, visual brainstorming, and placeholder imagery
+                    in presentations or portfolios. It is less appropriate for projects requiring factual
+                    visual documentation or culturally specific representation. The tool works best as a
+                    supplement to human design skills, not a replacement for intentional visual storytelling.
+                </p>
 
-            <h3>Capabilities</h3>
-            <p><img src="images/Adobe.png" alt="Adobe Firefly screenshot" class="screenshot">
-                Adobe Firefly excels at generating images from text prompts and integrating AI into
-                familiar design workflows. I tested it by generating conceptual images related to media
-                critique and digital culture themes. Firefly produces clean, visually polished images,
-                especially for illustrative purposes. Its limitations appear when prompts
-                require very specific details or realism, where outputs can feel generic or repetitive.
-            </p>
+                <!-- Ethical Considerations subsection discussing concerns around Firefly -->
+                <h3>Ethical Considerations</h3>
+                <p>
+                    Adobe emphasizes that Firefly is trained on licensed and Adobe Stock content, positioning
+                    it as a more ethically sourced image generator. Despite this, questions remain around
+                    originality and the long-term impact on creative labor. Bias can still emerge through
+                    prompt interpretation and default visual norms embedded in training data.
+                </p>
+            </div>
+        </div>
 
-            <h3>Appropriate Use</h3>
-            <p>
-                Firefly is well suited for concept art, visual brainstorming, and placeholder imagery
-                in presentations or portfolios. It is less appropriate for projects requiring factual
-                visual documentation or culturally specific representation. The tool works best as a
-                supplement to human design skills, not a replacement for intentional visual storytelling.
-            </p>
-
-            <h3>Ethical Considerations</h3>
-            <p>
-                Adobe emphasizes that Firefly is trained on licensed and Adobe Stock content, positioning
-                it as a more ethically sourced image generator. Despite this, questions remain around
-                originality and the long-term impact on creative labor. Bias can still emerge through
-                prompt interpretation and default visual norms embedded in training data.
-            </p>
-        </section>
-
-        <section>
-            <h2>Broader Reflections</h2>
-            <p>
-                In my academic and professional work, I imagine using AI tools to accelerate early stages
-                of thinking—drafting, organizing ideas, and visual exploration—while maintaining human
-                control over interpretation and final output. Within the DCDA program, AI tools may
-                reduce time spent on technical barriers but increase the importance of critical thinking,
-                ethics, and media literacy. Skills like contextual analysis, storytelling, and ethical
-                judgment remain uniquely human.
-            </p>
-            <p>
-                As AI tools continue to evolve, important evaluation questions include: What data is this
-                tool trained on? What assumptions does it embed? How transparent is its output? And how
-                does it shift power, labor, or authorship? Developing these questions as habits is more
-                valuable than mastering any single platform.
-            </p>
-        </section>
+        <!-- ============================================
+             TOGGLE 3: BROADER REFLECTIONS
+             Synthesizes lessons learned from AI tool evaluation
+             Starts in CLOSED (collapsed) state
+             ============================================ -->
+        <div class="toggle-section">
+            <!-- Toggle button: user clicks to expand/collapse this section -->
+            <button class="toggle-button" onclick="toggleContent(this)">
+                <!-- Text label with emoji for visual identification -->
+                <span>Broader Reflections</span>
+                <!-- Arrow that rotates when section is toggled -->
+                <span class="toggle-arrow">▼</span>
+            </button>
+            <!-- Hidden content that displays when toggle is clicked -->
+            <div class="toggle-content">
+                <!-- First reflection on integration of AI into academic and professional work -->
+                <p>
+                    In my academic and professional work, I imagine using AI tools to accelerate early stages
+                    of thinking—drafting, organizing ideas, and visual exploration—while maintaining human
+                    control over interpretation and final output. Within the DCDA program, AI tools may
+                    reduce time spent on technical barriers but increase the importance of critical thinking,
+                    ethics, and media literacy. Skills like contextual analysis, storytelling, and ethical
+                    judgment remain uniquely human.
+                </p>
+                <!-- Second reflection on critical evaluation of AI tools -->
+                <p>
+                    As AI tools continue to evolve, important evaluation questions include: What data is this
+                    tool trained on? What assumptions does it embed? How transparent is its output? And how
+                    does it shift power, labor, or authorship? Developing these questions as habits is more
+                    valuable than mastering any single platform.
+                </p>
+            </div>
+        </div>
     </main>
 
+    <!-- ============================================
+         FOOTER SECTION
+         Contains copyright information and GitHub link
+         ============================================ -->
     <footer>
         <p>&copy; 2026 Grant Franklin | <a href="https://github.com/grant-franklin/dcda-portfolio">GitHub</a></p>
     </footer>
+
+    <!-- ============================================
+         TOGGLE FUNCTIONALITY JAVASCRIPT
+         Handles the expand/collapse behavior of toggle sections
+         ============================================ -->
+    <script>
+        /**
+         * toggleContent function
+         * Purpose: Toggle the visibility of content sections when buttons are clicked
+         * 
+         * Parameters:
+         *   button - The button element that was clicked (button.toggle-button)
+         * 
+         * How it works:
+         *   1. Gets the next element (toggle-content div) that immediately follows the button
+         *   2. Toggles the 'active' class on both the button and the content container
+         *   3. CSS handles showing/hiding and styling changes based on the active class presence
+         *   4. Smooth transitions create a polished expand/collapse animation
+         */
+        function toggleContent(button) {
+            // Get the content div that immediately follows the button in the DOM
+            // Uses nextElementSibling to access the adjacent div element
+            const content = button.nextElementSibling;
+            
+            // Toggle the active class on the button element
+            // This changes button color from medium gray to darker gray
+            // and rotates the arrow icon 180 degrees
+            button.classList.toggle('active');
+            
+            // Toggle the active class on the content div element
+            // This changes display property from 'none' to 'block'
+            // making the hidden content visible to the user
+            content.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
