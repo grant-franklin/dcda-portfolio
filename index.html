@@ -7,6 +7,59 @@
     <meta name="author" content="Your Name">
     <title>Your Name | DCDA 40833 Skills Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Gray toggle button styles for reflection section */
+        .reflection-toggle-button {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background-color: #757575;
+            color: white;
+            border: none;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            margin-bottom: 0;
+        }
+
+        .reflection-toggle-button:hover {
+            background-color: #616161;
+        }
+
+        .reflection-toggle-button.active {
+            background-color: #424242;
+        }
+
+        .reflection-toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .reflection-toggle-button.active .reflection-toggle-arrow {
+            transform: rotate(180deg);
+        }
+
+        .reflection-toggle-content {
+            display: none;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border-left: 4px solid #757575;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 2rem;
+        }
+
+        .reflection-toggle-content.active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation: Links to all portfolio pages -->
@@ -108,14 +161,89 @@
             </div>
         </section>
 
-        <!-- Reflection Section: Optional semester reflection -->
+        <!-- Reflection Section: Detailed semester reflection on learning and growth -->
         <section id="reflection">
             <h2>Semester Reflection</h2>
-            <!-- TODO: After completing all labs, write a reflection on your growth -->
-            <p><strong>What I learned:</strong> In the first lab I developed skills in file structure and familiarity in github[Reflect on the skills you developed across all six labs]</p>
-            <p><strong>Challenges I overcame:</strong> Overall I struggled with correct fomatting and remembering how to work around each obstacle [What was difficult? How did you work through it?]</p>
-            <p><strong>How I grew:</strong> [How did your understanding of digital culture and data analytics evolve?]</p>
-            <p><strong>Looking ahead:</strong> [How will you apply these skills in the future?]</p>
+            
+            <!-- Toggle 1: A Detailed Look at My Learning Journey -->
+            <div class="reflection-toggle-section">
+                <button class="reflection-toggle-button" onclick="toggleReflection(this)">
+                    <span>A Detailed Look at My Learning Journey</span>
+                    <span class="reflection-toggle-arrow">▼</span>
+                </button>
+                <div class="reflection-toggle-content">
+                    <p>Throughout this semester, I've developed a multifaceted skill set that bridges technical execution with critical thinking about how data, design, and technology shape digital culture. Each lab has contributed meaningfully to my understanding of these interconnected domains.</p>
+                </div>
+            </div>
+
+            <!-- Toggle 2: What Each Lab Demonstrates About My Abilities -->
+            <div class="reflection-toggle-section">
+                <button class="reflection-toggle-button" onclick="toggleReflection(this)">
+                    <span>What Each Lab Demonstrates About My Abilities</span>
+                    <span class="reflection-toggle-arrow">▼</span>
+                </button>
+                <div class="reflection-toggle-content">
+                    <p><strong>Lab 2: AI Tool Evaluation</strong> demonstrates my capacity for <strong>critical analysis and ethical reasoning</strong>. By systematically evaluating ChatGPT and Adobe Firefly across four dimensions—Capabilities, Appropriate Use, Ethics, and Transparency—I showed I can move beyond surface-level tool assessment to deeply examine the implications of technology. This lab reveals my ability to ask the right questions: What data trains this system? Who benefits and who is harmed? What hidden biases might it perpetuate? These questions are central to digital culture literacy.</p>
+
+                    <p><strong>Lab 3: Tufte Critique</strong> demonstrates my <strong>analytical rigor and visual literacy</strong>. Using Edward Tufte's principles, I analyzed a data visualization not just for what it succeeds at, but what it *deliberately omits*. This lab shows I understand that design choices are never neutral—they shape interpretation and can obscure causality. I learned to distinguish between clarity (making data readable) and transparency (revealing methodology and limitations). This skill is foundational for recognizing how visualizations can both illuminate and mislead.</p>
+
+                    <p><strong>Lab 4: Tableau Visualization</strong> demonstrates my <strong>technical competence in exploratory data analysis and iterative design</strong>. By working with real stock market data, I showed I can move from raw data through cleaning, design choices, pattern recognition, and anomaly detection. This lab reveals my ability to use tools strategically—not just to follow tutorials, but to ask data-driven questions and let exploration guide discovery. I could reconcile my expectations against reality and adjust my analysis accordingly.</p>
+
+                    <p><strong>Lab 5: AI-Assisted Development</strong> demonstrates my <strong>adaptive problem-solving and the balance between human intuition and AI assistance</strong>. Across three experiments—portfolio enhancement, data analysis, and debugging—I showed I could leverage AI effectively while maintaining critical control. Critically, the debugging experiment reveals the most important lesson: I demonstrated self-awareness about my own blindspots. Rather than blame the code, I traced the problem to environmental structure—a skill that separates junior developers from experienced ones. This lab shows I understand that AI accelerates work but humans catch what tools miss.</p>
+
+                    <p><strong>Lab 6: Hometown Map</strong> demonstrates my <strong>integration of technical and conceptual thinking</strong>. Creating a custom basemap required me to think simultaneously about cartographic design principles, user experience, data representation, and technical implementation. Embedding my reflection with the map shows I understand that creating meaningful data artifacts requires explaining not just the "what" but the "why"—the decisions that shape how users will interpret information.</p>
+                </div>
+            </div>
+
+            <!-- Toggle 3: The Bigger Picture: What I've Learned -->
+            <div class="reflection-toggle-section">
+                <button class="reflection-toggle-button" onclick="toggleReflection(this)">
+                    <span>The Bigger Picture: What I've Learned</span>
+                    <span class="reflection-toggle-arrow">▼</span>
+                </button>
+                <div class="reflection-toggle-content">
+                    <p>Beyond individual technical skills, I've developed a framework for thinking about technology and data in cultural context. I now understand that every visualization, every tool, every design choice carries embedded values and assumptions. I've learned that being literate in digital culture means being able to ask critical questions about systems, data sources, and who decides what gets measured and how.</p>
+
+                    <p>I've also discovered that my strengths lie at the intersection of analysis and communication. I can work with data, but my real value comes from being able to translate complexity into meaning—explaining why patterns matter and what's hidden beneath surface-level conclusions.</p>
+                </div>
+            </div>
+
+            <!-- Toggle 4: Challenges I Overcame and How They Shaped Me -->
+            <div class="reflection-toggle-section">
+                <button class="reflection-toggle-button" onclick="toggleReflection(this)">
+                    <span>Challenges I Overcame and How They Shaped Me</span>
+                    <span class="reflection-toggle-arrow">▼</span>
+                </button>
+                <div class="reflection-toggle-content">
+                    <p>Early in the semester, I struggled with technical friction—file structure confusion, formatting issues, GitHub workflows that felt opaque. But these weren't just obstacles; they taught me that <strong>precision matters</strong>. A misaligned folder structure or a missing semicolon can break everything, which mirrors a larger truth in data work: small errors in methodology compound into major interpretation failures. By the time I reached the debugging lab, I could trace problems to their root cause rather than surface symptoms—a skill that will serve me far beyond this course.</p>
+                </div>
+            </div>
+
+            <!-- Toggle 5: How My Understanding of Digital Culture and Data Analytics Evolved -->
+            <div class="reflection-toggle-section">
+                <button class="reflection-toggle-button" onclick="toggleReflection(this)">
+                    <span>How My Understanding of Digital Culture and Data Analytics Evolved</span>
+                    <span class="reflection-toggle-arrow">▼</span>
+                </button>
+                <div class="reflection-toggle-content">
+                    <p>I came into this course with theoretical interest in how technology shapes society. I'm leaving with practical skills to interrogate that relationship empirically. I can now build visualizations, analyze data critically, evaluate AI systems thoughtfully, and communicate findings clearly. But more importantly, I understand that these technical skills serve a larger purpose: they're tools for understanding power, influence, and information flows in the digital age.</p>
+
+                    <p>I've learned that data analytics is not objective truth-finding—it's storytelling with constraints. The constraints make it powerful (you can't fabricate what data clearly shows), but the story you choose to tell shapes understanding profoundly.</p>
+                </div>
+            </div>
+
+            <!-- Toggle 6: Looking Ahead: Applying These Skills -->
+            <div class="reflection-toggle-section">
+                <button class="reflection-toggle-button" onclick="toggleReflection(this)">
+                    <span>Looking Ahead: Applying These Skills</span>
+                    <span class="reflection-toggle-arrow">▼</span>
+                </button>
+                <div class="reflection-toggle-content">
+                    <p>I intend to apply these skills across multiple contexts. In research settings, I can now design studies that produce meaningful data and visualizations that communicate findings clearly. In professional contexts, I can use data strategically to support arguments while remaining transparent about limitations. In my personal life, I've become equipped to be a more skeptical consumer of information—to ask where data comes from, what assumptions it embeds, and what narratives it serves.</p>
+
+                    <p>Most importantly, I'm prepared to continue learning. This semester was foundational, but technology and data practices evolve rapidly. The meta-skill I've developed is knowing how to teach myself new tools and critically evaluate their applications. That adaptability, combined with ethical reasoning about technology's role in culture, positions me to navigate whatever digital landscape emerges next.</p>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -126,5 +254,34 @@
     </footer>
     <!-- Site scripts -->
     <script src="js/hamburger.js" defer></script>
+    <script>
+        /**
+         * toggleReflection function
+         * Purpose: Toggle the visibility of reflection content sections when buttons are clicked
+         * 
+         * Parameters:
+         *   button - The button element that was clicked (button.reflection-toggle-button)
+         * 
+         * How it works:
+         *   1. Gets the next element (reflection-toggle-content div) that immediately follows the button
+         *   2. Toggles the 'active' class on both the button and the content container
+         *   3. CSS handles showing/hiding and styling changes based on the active class presence
+         *   4. Smooth transitions create a polished expand/collapse animation
+         */
+        function toggleReflection(button) {
+            // Get the content div that immediately follows the button in the DOM
+            const content = button.nextElementSibling;
+            
+            // Toggle the active class on the button element
+            // This changes button color from medium gray to darker gray
+            // and rotates the arrow icon 180 degrees
+            button.classList.toggle('active');
+            
+            // Toggle the active class on the content div element
+            // This changes display property from 'none' to 'block'
+            // making the hidden content visible to the user
+            content.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
