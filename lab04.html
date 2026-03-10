@@ -1,48 +1,314 @@
-<section>
-<h2>Tableau Visualization</h2>
-<p>This interactive dashboard was created in Tableau Public and embedded into this portfolio.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization Lab | Grant Franklin</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* ============================================
+           TOGGLE/ACCORDION STYLES
+           These styles create an interactive accordion interface
+           that allows users to expand and collapse analysis sections.
+           Uses gray color scheme for professional appearance.
+           ============================================ */
 
-<div class="tableau-responsive">
-    <iframe
-    src="https://us-east-1.online.tableau.com/t/grantfranklin04-7f642cf578/views/DataVisualizationinTableau-AnalysisofBroadcomAVGOStockPerformance/Dashboard1?:showVizHome=no&:embed=yes&:toolbar=yes"
-    width="100%"
-    height="800"
-    frameborder="0"
-    allowfullscreen>
-    </iframe>
-</div>
-</section>
+        /* Container for each toggle section (button + content pair)
+           Adds spacing between consecutive toggle sections */
+        .toggle-section {
+            margin-bottom: 1.5rem;
+        }
 
-<section class="reflection">
-  <h2>Reflection and Analysis</h2>
+        /* Main toggle button that users click to expand/collapse content
+           Styled as a gray header bar with flexbox layout for icon alignment */
+        .toggle-button {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background-color: #757575; /* Medium gray background */
+            color: white;
+            border: none;
+            border-radius: 8px 8px 0 0; /* Rounded corners on top only */
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: left;
+            display: flex;
+            justify-content: space-between; /* Pushes text and arrow to opposite ends */
+            align-items: center; /* Vertically centers content */
+            transition: background-color 0.3s ease; /* Smooth color transition on hover */
+        }
 
-  <h3>1. Data Preparation</h3>
-  <p>
-    The dataset used for this visualization consists of historical stock market data for Broadcom Inc. (AVGO) from 2009 to 2025, including daily open, high, low, close, adjusted close prices, and trading volume. Overall, the dataset was relatively clean compared to many real-world datasets, which reduced the amount of preprocessing required. However, when uploading the CSV file into Tableau Public, the primary issue involved how the date field was interpreted. The date column initially included both timestamp and timezone information, which required verification to ensure Tableau correctly recognized it as a date field rather than plain text. Once confirmed, Tableau parsed the date correctly, allowing it to be used as a continuous time dimension. No additional cleaning was necessary for numeric fields, as prices and volume were already formatted consistently. This experience reinforced the importance of checking data types before building visualizations, even when working with well-structured financial data.
-  </p>
+        /* Hover state: button becomes slightly darker gray for visual feedback */
+        .toggle-button:hover {
+            background-color: #616161;
+        }
 
-  <h3>2. Design Choices</h3>
-  <p>
-    Two primary visualizations were created to support exploratory analysis. The first chart displays adjusted closing price over time, using date as the horizontal axis and adjusted close as the vertical axis. Adjusted closing price was chosen over raw closing price because it accounts for stock splits and dividends, providing a more accurate representation of long-term value. The second chart visualizes daily price volatility using a calculated field defined as the difference between the daily high and low prices. This derived metric allows volatility to be analyzed independently from overall price direction. A line mark type was selected for both charts to emphasize continuity and trends over time. The two charts were combined into a dashboard, with the price trend acting as a filter for the volatility chart, enabling interactive exploration of specific time periods.
-  </p>
+        /* Active state: button becomes darker gray when section is expanded */
+        .toggle-button.active {
+            background-color: #424242;
+        }
 
-  <h3>3. Expected Patterns</h3>
-  <p>
-    Based on general knowledge of stock market behavior and Broadcom’s position within the semiconductor industry, several patterns were expected prior to visualizing the data. First, a long-term upward trend in adjusted price was anticipated, reflecting both company growth and broader market expansion over the past decade. Second, periods of increased volatility were expected around major market disruptions, such as the COVID-19 pandemic and periods of economic uncertainty. These expectations were largely confirmed by the visualization. The adjusted price chart shows steady growth over time, particularly accelerating after 2020. Focusing on the period following 2022, the visualization confirms a steeper upward trajectory, consistent with increased demand for semiconductor infrastructure and investor optimism around emerging technologies.
-  </p>
+        /* Arrow icon that rotates when section is toggled
+           Uses CSS transform to indicate open/closed state */
+        .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease; /* Smooth rotation animation */
+            font-size: 1.2rem;
+        }
 
-  <h3>4. Surprises and Outliers</h3>
-  <p>
-    While the overall trends aligned with expectations, several surprising deviations emerged when examining daily volatility. Notably, late 2021 displays a sharp volatility spike followed by a dip in price, suggesting heightened uncertainty rather than a sustained directional shift. Even more striking were volatility spikes in mid-2023 and April 2024, which were larger than anticipated given the already strong price performance. These spikes indicate that significant intraday price movement can occur even during periods of long-term growth. Additionally, some volatility spikes did not correspond to major downward price movements, highlighting how market reactions can amplify short-term instability without fundamentally altering the broader trend.
-  </p>
+        /* Rotates arrow 180 degrees when button is active (section open) */
+        .toggle-button.active .toggle-arrow {
+            transform: rotate(180deg);
+        }
 
-  <h3>5. Questions for Further Investigation</h3>
-  <p>
-    The observed outliers raise several questions that could guide further analysis. How closely do the largest volatility spikes align with Broadcom’s earnings announcements or acquisition news? Are similar volatility patterns visible across other semiconductor firms during the same periods, or are they company-specific? Additionally, how much of the observed volatility can be attributed to broader macroeconomic factors such as interest rate expectations versus industry-specific developments like AI-related demand? Exploring these questions would require integrating external datasets, such as earnings calendars, macroeconomic indicators, or peer company stock data.
-  </p>
+        /* Hidden content container that expands when toggle button is clicked
+           Initially set to display: none, activated via JavaScript */
+        .toggle-content {
+            display: none;
+            padding: 1.5rem;
+            background-color: #f5f5f5; /* Very light gray background for subtle contrast */
+            border-left: 4px solid #757575; /* Gray accent border on left */
+            border-right: 1px solid #ddd; /* Subtle right border */
+            border-bottom: 1px solid #ddd; /* Subtle bottom border */
+            border-radius: 0 0 8px 8px; /* Rounded corners on bottom only */
+        }
 
-  <h3>6. Tool Evaluation</h3>
-  <p>
-    Tableau Public proved to be a powerful tool for exploratory data analysis, particularly for identifying trends and anomalies within time-series data. Its ability to quickly generate interactive visualizations made it easy to explore multiple perspectives without extensive coding. Features such as calculated fields, tooltips, and dashboard filters allowed for layered analysis while maintaining visual clarity. However, Tableau Public has limitations compared to programming-based tools like Python or R. Advanced statistical analysis, event annotation, and automated anomaly detection are more difficult to implement within Tableau’s web interface. Additionally, customization options are somewhat constrained in the free public version. Despite these limitations, Tableau excels at revealing patterns and supporting exploratory reasoning, making it well-suited for this analysis.
-  </p>
-</section>
+        /* Shows content when toggle-content.active class is added via JavaScript */
+        .toggle-content.active {
+            display: block;
+        }
+
+        /* Styling for paragraphs within toggle content */
+        .toggle-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Tableau responsive container for embedded dashboard */
+        .tableau-responsive {
+            width: 100%;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         HEADER SECTION
+         Contains navigation and page title
+         ============================================ -->
+    <header>
+        <!-- Navigation bar with links to other labs -->
+        <nav>
+            <a href="index.html">Home</a>
+            <!-- Marks current page as active for CSS styling -->
+            <a href="lab04.html" class="active">Lab 4: Data Visualization</a>
+        </nav>
+        <h1>Data Visualization in Tableau</h1>
+    </header>
+
+    <!-- ============================================
+         MAIN CONTENT AREA
+         Contains Tableau visualization and analysis sections
+         ============================================ -->
+    <main>
+        <!-- ============================================
+             TABLEAU VISUALIZATION SECTION
+             Displays embedded Tableau dashboard
+             Always visible, not collapsible
+             ============================================ -->
+        <section>
+            <h2>Tableau Visualization</h2>
+            <!-- Description of the Tableau dashboard -->
+            <p>This interactive dashboard was created in Tableau Public and embedded into this portfolio.</p>
+
+            <!-- Responsive container for embedded Tableau dashboard -->
+            <div class="tableau-responsive">
+                <iframe
+                src="https://us-east-1.online.tableau.com/t/grantfranklin04-7f642cf578/views/DataVisualizationinTableau-AnalysisofBroadcomAVGOStockPerformance/Dashboard1?:showVizHome=no&:embed=yes&:toolbar=yes"
+                width="100%"
+                height="800"
+                frameborder="0"
+                allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- ============================================
+             REFLECTION AND ANALYSIS SECTION
+             Contains six expandable toggle sections for detailed analysis
+             ============================================ -->
+        <section>
+            <h2>Reflection and Analysis</h2>
+
+            <!-- ============================================
+                 TOGGLE 1: DATA PREPARATION
+                 Explains data cleaning and preparation process
+                 Starts in CLOSED (collapsed) state
+                 ============================================ -->
+            <div class="toggle-section">
+                <!-- Toggle button: user clicks to expand/collapse this section -->
+                <button class="toggle-button" onclick="toggleContent(this)">
+                    <!-- Text label with emoji for visual identification -->
+                    <span>🔧 Data Preparation</span>
+                    <!-- Arrow that rotates when section is toggled -->
+                    <span class="toggle-arrow">▼</span>
+                </button>
+                <!-- Hidden content that displays when toggle is clicked -->
+                <div class="toggle-content">
+                    <p>
+                        The dataset used for this visualization consists of historical stock market data for Broadcom Inc. (AVGO) from 2009 to 2025, including daily open, high, low, close, adjusted close prices, and trading volume. Overall, the dataset was relatively clean compared to many real-world datasets, which reduced the amount of preprocessing required. However, when uploading the CSV file into Tableau Public, the primary issue involved how the date field was interpreted. The date column initially included both timestamp and timezone information, which required verification to ensure Tableau correctly recognized it as a date field rather than plain text. Once confirmed, Tableau parsed the date correctly, allowing it to be used as a continuous time dimension. No additional cleaning was necessary for numeric fields, as prices and volume were already formatted consistently. This experience reinforced the importance of checking data types before building visualizations, even when working with well-structured financial data.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 TOGGLE 2: DESIGN CHOICES
+                 Describes visualization design decisions
+                 Starts in CLOSED (collapsed) state
+                 ============================================ -->
+            <div class="toggle-section">
+                <!-- Toggle button: user clicks to expand/collapse this section -->
+                <button class="toggle-button" onclick="toggleContent(this)">
+                    <!-- Text label with emoji for visual identification -->
+                    <span>Design Choices</span>
+                    <!-- Arrow that rotates when section is toggled -->
+                    <span class="toggle-arrow">▼</span>
+                </button>
+                <!-- Hidden content that displays when toggle is clicked -->
+                <div class="toggle-content">
+                    <p>
+                        Two primary visualizations were created to support exploratory analysis. The first chart displays adjusted closing price over time, using date as the horizontal axis and adjusted close as the vertical axis. Adjusted closing price was chosen over raw closing price because it accounts for stock splits and dividends, providing a more accurate representation of long-term value. The second chart visualizes daily price volatility using a calculated field defined as the difference between the daily high and low prices. This derived metric allows volatility to be analyzed independently from overall price direction. A line mark type was selected for both charts to emphasize continuity and trends over time. The two charts were combined into a dashboard, with the price trend acting as a filter for the volatility chart, enabling interactive exploration of specific time periods.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 TOGGLE 3: EXPECTED PATTERNS
+                 Outlines anticipated patterns before analysis
+                 Starts in CLOSED (collapsed) state
+                 ============================================ -->
+            <div class="toggle-section">
+                <!-- Toggle button: user clicks to expand/collapse this section -->
+                <button class="toggle-button" onclick="toggleContent(this)">
+                    <!-- Text label with emoji for visual identification -->
+                    <span>Expected Patterns</span>
+                    <!-- Arrow that rotates when section is toggled -->
+                    <span class="toggle-arrow">▼</span>
+                </button>
+                <!-- Hidden content that displays when toggle is clicked -->
+                <div class="toggle-content">
+                    <p>
+                        Based on general knowledge of stock market behavior and Broadcom's position within the semiconductor industry, several patterns were expected prior to visualizing the data. First, a long-term upward trend in adjusted price was anticipated, reflecting both company growth and broader market expansion over the past decade. Second, periods of increased volatility were expected around major market disruptions, such as the COVID-19 pandemic and periods of economic uncertainty. These expectations were largely confirmed by the visualization. The adjusted price chart shows steady growth over time, particularly accelerating after 2020. Focusing on the period following 2022, the visualization confirms a steeper upward trajectory, consistent with increased demand for semiconductor infrastructure and investor optimism around emerging technologies.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 TOGGLE 4: SURPRISES AND OUTLIERS
+                 Discusses unexpected findings in the data
+                 Starts in CLOSED (collapsed) state
+                 ============================================ -->
+            <div class="toggle-section">
+                <!-- Toggle button: user clicks to expand/collapse this section -->
+                <button class="toggle-button" onclick="toggleContent(this)">
+                    <!-- Text label with emoji for visual identification -->
+                    <span>⚡ Surprises and Outliers</span>
+                    <!-- Arrow that rotates when section is toggled -->
+                    <span class="toggle-arrow">▼</span>
+                </button>
+                <!-- Hidden content that displays when toggle is clicked -->
+                <div class="toggle-content">
+                    <p>
+                        While the overall trends aligned with expectations, several surprising deviations emerged when examining daily volatility. Notably, late 2021 displays a sharp volatility spike followed by a dip in price, suggesting heightened uncertainty rather than a sustained directional shift. Even more striking were volatility spikes in mid-2023 and April 2024, which were larger than anticipated given the already strong price performance. These spikes indicate that significant intraday price movement can occur even during periods of long-term growth. Additionally, some volatility spikes did not correspond to major downward price movements, highlighting how market reactions can amplify short-term instability without fundamentally altering the broader trend.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 TOGGLE 5: QUESTIONS FOR FURTHER INVESTIGATION
+                 Lists open research questions based on findings
+                 Starts in CLOSED (collapsed) state
+                 ============================================ -->
+            <div class="toggle-section">
+                <!-- Toggle button: user clicks to expand/collapse this section -->
+                <button class="toggle-button" onclick="toggleContent(this)">
+                    <!-- Text label with emoji for visual identification -->
+                    <span>Questions for Further Investigation</span>
+                    <!-- Arrow that rotates when section is toggled -->
+                    <span class="toggle-arrow">▼</span>
+                </button>
+                <!-- Hidden content that displays when toggle is clicked -->
+                <div class="toggle-content">
+                    <p>
+                        The observed outliers raise several questions that could guide further analysis. How closely do the largest volatility spikes align with Broadcom's earnings announcements or acquisition news? Are similar volatility patterns visible across other semiconductor firms during the same periods, or are they company-specific? Additionally, how much of the observed volatility can be attributed to broader macroeconomic factors such as interest rate expectations versus industry-specific developments like AI-related demand? Exploring these questions would require integrating external datasets, such as earnings calendars, macroeconomic indicators, or peer company stock data.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 TOGGLE 6: TOOL EVALUATION
+                 Assesses strengths and limitations of Tableau
+                 Starts in CLOSED (collapsed) state
+                 ============================================ -->
+            <div class="toggle-section">
+                <!-- Toggle button: user clicks to expand/collapse this section -->
+                <button class="toggle-button" onclick="toggleContent(this)">
+                    <!-- Text label with emoji for visual identification -->
+                    <span>Tool Evaluation</span>
+                    <!-- Arrow that rotates when section is toggled -->
+                    <span class="toggle-arrow">▼</span>
+                </button>
+                <!-- Hidden content that displays when toggle is clicked -->
+                <div class="toggle-content">
+                    <p>
+                        Tableau Public proved to be a powerful tool for exploratory data analysis, particularly for identifying trends and anomalies within time-series data. Its ability to quickly generate interactive visualizations made it easy to explore multiple perspectives without extensive coding. Features such as calculated fields, tooltips, and dashboard filters allowed for layered analysis while maintaining visual clarity. However, Tableau Public has limitations compared to programming-based tools like Python or R. Advanced statistical analysis, event annotation, and automated anomaly detection are more difficult to implement within Tableau's web interface. Additionally, customization options are somewhat constrained in the free public version. Despite these limitations, Tableau excels at revealing patterns and supporting exploratory reasoning, making it well-suited for this analysis.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================
+         FOOTER SECTION
+         Contains copyright information and GitHub link
+         ============================================ -->
+    <footer>
+        <p>&copy; 2026 Grant Franklin | <a href="https://github.com/grant-franklin/dcda-portfolio">GitHub</a></p>
+    </footer>
+
+    <!-- ============================================
+         TOGGLE FUNCTIONALITY JAVASCRIPT
+         Handles the expand/collapse behavior of toggle sections
+         ============================================ -->
+    <script>
+        /**
+         * toggleContent function
+         * Purpose: Toggle the visibility of content sections when buttons are clicked
+         * 
+         * Parameters:
+         *   button - The button element that was clicked (button.toggle-button)
+         * 
+         * How it works:
+         *   1. Gets the next element (toggle-content div) that immediately follows the button
+         *   2. Toggles the 'active' class on both the button and the content container
+         *   3. CSS handles showing/hiding and styling changes based on the active class presence
+         *   4. Smooth transitions create a polished expand/collapse animation
+         */
+        function toggleContent(button) {
+            // Get the content div that immediately follows the button in the DOM
+            // Uses nextElementSibling to access the adjacent div element
+            const content = button.nextElementSibling;
+            
+            // Toggle the active class on the button element
+            // This changes button color from medium gray to darker gray
+            // and rotates the arrow icon 180 degrees
+            button.classList.toggle('active');
+            
+            // Toggle the active class on the content div element
+            // This changes display property from 'none' to 'block'
+            // making the hidden content visible to the user
+            content.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
